@@ -28,7 +28,7 @@ public:
     //El método permite leer datos sin necesidad de eliminar el nodo
     std::string getNext();
 private:
-    Node *makeNode(std::string data);
+    Node *makeNode(std::string Data);
     //Estructura para manipular la cola
     typedef struct queue{
         Node* header;
