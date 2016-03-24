@@ -7,6 +7,7 @@ AdminWindow::AdminWindow(QWidget *parent) :
 {
     this->service = Search_Save_Services();
     ui->setupUi(this);
+    ui->statusBar->showMessage(this->status.c_str());
 }
 
 AdminWindow::~AdminWindow()
@@ -23,7 +24,9 @@ void AdminWindow::on_searchButtonn_clicked()
     else{
         //Llama al servicio de búsqueda e informa del éxito o fracaso de la búsqueda
         if(this->service.SearchScenesService(path.toStdString())){
-            QMessageBox::information(this, "Escenas encontradas", "Se encontraron x escenas");
+            this->queueLength = std::to_string(this->service.getQueueLength());
+            this->status += " " + this->queueLength + " escenas encontradas";
+            ui->statusBar->showMessage(this->status.c_str());
         }
         else{
             QMessageBox::warning(this, "No hay escenas", "No se encontraron escenas en la ruta especificada");
@@ -43,21 +46,32 @@ void AdminWindow::on_toolButton_clicked()
     ui->PathEddit->setText(destinyPath);
 }
 //Este botón permite realizar la copia de las escenas encontradas previamente
-void AdminWindow::on_addButton_clicked()
-{   //Comprueba que existan escenas que copiar
+void AdminWindow::on_addButton_clicked(){
+    //Comprueba que existan escenas que copiar
     if(this->service.QueueisEmpty()){
         QMessageBox::warning(this, "Advertencia", "No hay escenas por añadir");
         return;
     }
+    else{
+        std::string queueLength = std::to_string(this->service.getQueueLength());
+        std::string Info = "Se copiarán " + queueLength + " escenas";
+        QMessageBox::StandardButton reply = QMessageBox::information(this, "Copiando escenas", Info.c_str(),
+                                 QMessageBox::Ok, QMessageBox::Cancel);
+
+        if(reply == QMessageBox::Cancel)
+            return;
+    }
+
     //obtención del usuario actualmente activo en el SO
     struct passwd* pw = getpwuid(getuid());
     std::string user_name( pw->pw_name);
     //Creación de la ruta donde se copiarán las escenas
-    std::string scenes_path = "/home/" + user_name + "/LandsatScenes";
-    std::string makeScenesDir = "mkdir " + scenes_path;
+    std::string scenes_destiny = "/home/" + user_name + "/LandsatScenes";
+    std::string makeScenesDir = "mkdir " + scenes_destiny;
     system(makeScenesDir.c_str());
     //Verifica que el servicio de copiado haga bien su trabajo
-    if(this->service.CopyService(scenes_path)){
+    if(this->service.CopyService(scenes_destiny)){
+        this->service.getScenesCoordinates();
         QMessageBox::information(this, "Copiado exitoso", "Las escenas se han añadido correctamente");
     }
     else{

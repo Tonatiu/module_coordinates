@@ -1,12 +1,7 @@
 #ifndef SEARCH_SAVE_SERVICES_H
 #define SEARCH_SAVE_SERVICES_H
 #include "pathqueue.h"
-//Estructura que almacena las coordenadas encontradas en un MTL
-//Almacena la coordenadas y el nombre del MTL
-typedef struct scene_coordinates{
-    double coordinates[8];
-    std::string sceneName;
-}Scene_Coors;
+#include "coordinatestable.h"
 
 class Search_Save_Services
 {
@@ -33,8 +28,10 @@ private:
     FILE* SearchService(std::string path, std::string reg_ex);
     //Atributos
     pathQueue scene_path_queue;
+    std::string Origin_Path;
+    std::string Destny_Path;
     //Arreglo de coordenadas
-    Scene_Coors* coors_table;
+    CoordinatesTable coors_table;
 };
 
 #endif // SEARCH_SAVE_SERVICES_H

@@ -28,6 +28,8 @@ private slots:
 private:
     Ui::AdminWindow *ui;
     Search_Save_Services service;
+    std::string status = "Status: ";
+    std::string queueLength;
 };
 
 #endif // ADMINWINDOW_H

@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         adminwindow.cpp \
     search_save_services.cpp \
-    pathqueue.cpp
+    pathqueue.cpp \
+    coordinatestable.cpp
 
 HEADERS  += adminwindow.h \
     search_save_services.h \
-    pathqueue.h
+    pathqueue.h \
+    coordinatestable.h
 
 FORMS    += adminwindow.ui

@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <algorithm>
 #include <string.h>
+#include <fstream>
 //La estructura almacena la información de los paths(En general puede almacenar cualquier string)
 typedef struct node{
     char* data;
