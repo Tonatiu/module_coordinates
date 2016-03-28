@@ -30,3 +30,5 @@ HEADERS  += include/ui/adminwindow.h \
     include/services/datafinder/coordinates/coordinatestable.h
 
 FORMS    += adminwindow.ui
+
+CONFIG += c++11
