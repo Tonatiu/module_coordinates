@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
-#include "search_save_services.h"
+#include "./include/services/search_save_services.h"
 
 namespace Ui {
 class AdminWindow;
@@ -28,6 +28,8 @@ private slots:
 private:
     Ui::AdminWindow *ui;
     Search_Save_Services service;
+    std::string status = "Status: ";
+    std::string queueLength;
 };
 
 #endif // ADMINWINDOW_H

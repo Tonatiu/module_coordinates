@@ -1,4 +1,4 @@
-#include "pathqueue.h"
+#include "./include/services/queue/pathqueue.h"
 //Constructor de la clase. Inicializa todos los punteros y el contador
 pathQueue::pathQueue()
 {
@@ -8,7 +8,7 @@ pathQueue::pathQueue()
     this->path_queue.counter = 0;
 }
 //Genera un nodo con su respectiva información
-Node* pathQueue::makeNode(std::string data){
+Node* pathQueue::makeNode(std::string Data){
     Node* newNode =(Node*) malloc(sizeof(Node));
     //Verificación de memoria ram
     if(newNode == NULL){
@@ -16,10 +16,10 @@ Node* pathQueue::makeNode(std::string data){
         exit(0);
     }
     //Copiado de la información de interés
-    newNode->data = (char*) malloc(data.length());
-    strcpy(newNode->data, data.c_str());
+    newNode->data = (char*) malloc(Data.length());
+    strcpy(newNode->data, Data.c_str());
     newNode->next = NULL;
-    data = NULL;
+    //Data = NULL;
     return newNode;
 }
 //Permite agregar un nodo a la cola

@@ -1,4 +1,4 @@
-#include "adminwindow.h"
+#include "./include/ui/adminwindow.h"
 #include "ui_adminwindow.h"
 
 AdminWindow::AdminWindow(QWidget *parent) :
@@ -19,7 +19,7 @@ void AdminWindow::on_searchButtonn_clicked()
 {
     QString path = ui->PathEddit->text();
     //Comprueba que el texto de PathEddit sea una ruta válida
-    if(!this->service.matches(path.toStdString(), "(\/[a-zA-Z0-9_]*)+"))
+    if(!matches(path.toStdString(), "(\/[a-zA-Z0-9_]*)+"))
         QMessageBox::warning(this, "Ruta no válida", "Ingrese una ruta válida");
     else{
         //Llama al servicio de búsqueda e informa del éxito o fracaso de la búsqueda
@@ -71,7 +71,7 @@ void AdminWindow::on_addButton_clicked(){
     system(makeScenesDir.c_str());
     //Verifica que el servicio de copiado haga bien su trabajo
     if(this->service.CopyService(scenes_destiny)){
-        this->service.getScenesCoordinates();
+        this->service.GetDataService();
         QMessageBox::information(this, "Copiado exitoso", "Las escenas se han añadido correctamente");
     }
     else{

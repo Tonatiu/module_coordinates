@@ -1,4 +1,4 @@
-#include "adminwindow.h"
+#include "./include/ui/adminwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

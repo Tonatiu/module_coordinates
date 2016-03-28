@@ -13,14 +13,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        adminwindow.cpp \
-    search_save_services.cpp \
-    pathqueue.cpp \
-    coordinatestable.cpp
+    src/ui/adminwindow.cpp \
+    src/t_regex/t_regex.cpp \
+    src/services/search_save_services.cpp \
+    src/services/queue/pathqueue.cpp \
+    src/services/datafinder/mtl_data_collector.cpp \
+    src/services/datafinder/radiances/scene_rad_data.cpp \
+    src/services/datafinder/coordinates/coordinatestable.cpp
 
-HEADERS  += adminwindow.h \
-    search_save_services.h \
-    pathqueue.h \
-    coordinatestable.h
+HEADERS  += include/ui/adminwindow.h \
+    include/t_regex/t_regex.h \
+    include/services/search_save_services.h \
+    include/services/queue/pathqueue.h \
+    include/services/datafinder/mtl_data_collector.h \
+    include/services/datafinder/radiances/scene_rad_data.h \
+    include/services/datafinder/coordinates/coordinatestable.h
 
 FORMS    += adminwindow.ui
