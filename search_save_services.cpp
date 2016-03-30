@@ -1,4 +1,4 @@
-#include "./include/services/search_save_services.h"
+#include "search_save_services.h"
 
 using namespace std;
 
@@ -62,36 +62,28 @@ FILE *Search_Save_Services::SearchService(string path, string reg_ex){
     //Regreso del resultado de la consulta de ls
     return popen(command.c_str(), "r");
 }
-//Obtiene ciertos datos del la metadata MTL. dataCollector es quien se encarga de la recopilación
-//y almacenamiento
+
 void Search_Save_Services::GetDataService(){
-    if(this->QueueisEmpty())
-        return;
-    //Obtención del número de escenas encontradas
     int scenesCounter = this->scene_path_queue.getLength();
-    //creación del arreglo de punteros para los recolectores de datos para cada escena encontrada
-    this->dataCollectors = (MTL_Data_Collector **) malloc(sizeof(MTL_Data_Collector*) * scenesCounter);
-    if(this->dataCollectors == NULL){
-        cout << "Error, Memory out!!\n";
-        exit(0);
-    }
-    //Invocación a  cada recolector para realizar sus tareas
+    if(scenesCounter <= 0)
+        return;
+
+    this->dataCollectors = (MTL_Data_Collector *) malloc(sizeof(MTL_Data_Collector) * scenesCounter);
+
     for(int i = 0; i < scenesCounter; i++){
-        this->dataCollectors[i] = new MTL_Data_Collector(i);
-        //Creacipon del path del archivo de metadata
+        this->dataCollectors[i] = MTL_Data_Collector(i);
         string sceneName = this->scene_path_queue.getNext();
         string MTL_path = this->Origin_Path + "/" + sceneName + "/" + sceneName + "_MTL.txt";
-        //Apertura del archivo, en caso de no abrirse se ignora y se pasa al siguiente
-        if(this->dataCollectors[i]->OpenMTLFile(MTL_path)){
-            this->dataCollectors[i]->ObtainData();
+        if(this->dataCollectors[i].OpenMTLFile(MTL_path)){
+            this->dataCollectors[i].ObtainData();
         }
     }
 }
-//Verifica si la cola de datos está vacía
+
 bool Search_Save_Services::QueueisEmpty(){
     return this->scene_path_queue.getLength() <= 0;
 }
-//Obtiene la longitud de la cola
+
 int Search_Save_Services::getQueueLength(){
     return this->scene_path_queue.getLength();
 }

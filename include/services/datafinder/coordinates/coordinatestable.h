@@ -10,10 +10,14 @@ class CoordinatesTable
 {
 public:
     CoordinatesTable();
+    //Añade una coordenada en la posición pos
     void Add_Coordinate(int pos, double value);
+    //Regresa el apintador a las coordenadas obtenidas
     double* Get_Coordinates();
+    //Permite imprimir el contenido de la clase
     void PrintData();
 private:
+    //Arreglo de coordenadas
     double coordinates[8];
 };
 

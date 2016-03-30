@@ -29,7 +29,7 @@ private:
     string Origin_Path;
     string Destny_Path;
     //Arreglo de data extraída del MTL
-    MTL_Data_Collector* dataCollectors;
+    MTL_Data_Collector** dataCollectors;
 };
 
 #endif // SEARCH_SAVE_SERVICES_H
