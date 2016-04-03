@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = TT_Admin_3
 TEMPLATE = app
 
+INCLUDEPATH += /usr/local/include/opencv
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
 
 SOURCES += main.cpp\
     src/ui/adminwindow.cpp \
@@ -32,3 +34,5 @@ HEADERS  += include/ui/adminwindow.h \
     include/calculator/basics_calculations.h
 
 FORMS    += adminwindow.ui
+
+CONFIG += c++11

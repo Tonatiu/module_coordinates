@@ -25,6 +25,8 @@ private slots:
 
     void on_addButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::AdminWindow *ui;
     Search_Save_Services service;

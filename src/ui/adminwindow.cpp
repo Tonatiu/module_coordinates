@@ -1,5 +1,6 @@
 #include "./include/ui/adminwindow.h"
 #include "ui_adminwindow.h"
+#include <opencv2/opencv.hpp>
 
 AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -77,4 +78,12 @@ void AdminWindow::on_addButton_clicked(){
     else{
         QMessageBox::warning(this, "Error al copiar", "Algunas escenas no pudieron copiarse a la carpeta de destino");
     }
+}
+
+void AdminWindow::on_pushButton_clicked()
+{
+    qDebug( "hola numeros: %d", 12345 );
+    cv::Mat inputImage = cv::imread("/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B1.TIF");
+
+    qDebug( "el total() es: %d", inputImage.total() );
 }
