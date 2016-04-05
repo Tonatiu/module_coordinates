@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     src/services/queue/pathqueue.cpp \
     src/services/datafinder/mtl_data_collector.cpp \
     src/services/datafinder/radiances/scene_rad_data.cpp \
-    src/services/datafinder/coordinates/coordinatestable.cpp
+    src/services/datafinder/coordinates/coordinatestable.cpp \
+    src/calculator/basics_calculations.cpp
 
 HEADERS  += include/ui/adminwindow.h \
     include/t_regex/t_regex.h \
@@ -29,7 +30,8 @@ HEADERS  += include/ui/adminwindow.h \
     include/services/queue/pathqueue.h \
     include/services/datafinder/mtl_data_collector.h \
     include/services/datafinder/radiances/scene_rad_data.h \
-    include/services/datafinder/coordinates/coordinatestable.h
+    include/services/datafinder/coordinates/coordinatestable.h \
+    include/calculator/basics_calculations.h
 
 FORMS    += adminwindow.ui
 

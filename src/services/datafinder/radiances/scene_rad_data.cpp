@@ -2,6 +2,8 @@
 
 Scene_Rad_Data::Scene_Rad_Data()
 {
+    //Inicialización de los vectores de radiancias. Se usa un tamaño de 11 en caso de que
+    //las escenas pertenezcan a landzat 8
     this->scene_add_rads = (double *) calloc(11, sizeof(double));
     this->scene_mult_rads = (double *) calloc(11, sizeof(double));
 }
@@ -9,7 +11,6 @@ Scene_Rad_Data::Scene_Rad_Data()
 void Scene_Rad_Data::Set_Add_Rad(int band, double value){
     this->scene_add_rads[band] = value;
 }
-
 void Scene_Rad_Data::Set_Mult_Rad(int band, double value){
     this->scene_mult_rads[band] = value;
 }
