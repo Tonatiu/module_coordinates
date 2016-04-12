@@ -12,6 +12,7 @@ TARGET = TT_Admin_3
 TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include/opencv
+               /usr/local/include/opencv2
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
 
 SOURCES += main.cpp\

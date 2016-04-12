@@ -100,9 +100,9 @@ void AdminWindow::on_pushButton_clicked()
         =0 Return a grayscale image.
         <0 Return the loaded image as is (with alpha channel).
    */
-    cv::Mat inputImage_1 = cv::imread(rutaTIFF_1, CV_LOAD_IMAGE_GRAYSCALE);
-    cv::Mat inputImage_2 = cv::imread(rutaTIFF_2, CV_LOAD_IMAGE_GRAYSCALE);
-    cv::Mat inputImage_3 = cv::imread(rutaTIFF_3, CV_LOAD_IMAGE_GRAYSCALE);
+    cv::Mat inputImage_1 = cv::imread(rutaTIFF_1, 0);
+    cv::Mat inputImage_2 = cv::imread(rutaTIFF_2, 0);
+    cv::Mat inputImage_3 = cv::imread(rutaTIFF_3, 0);
     cv::Mat inputLena = cv::imread(rutaLena);
 
     std::vector<cv::Mat> array_to_merge;

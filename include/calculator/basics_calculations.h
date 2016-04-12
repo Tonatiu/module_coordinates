@@ -13,9 +13,9 @@ public:
     //El cosntructor requiere los datos almacenados en un colector de datos
     Basics_Calculations(MTL_Data_Collector *data_collector);
     //Permite calcular la radiancia de un pixel de la banda band
-    double RadianceCalc(int pixel, int band);
+    float RadianceCalc(int pixel, int band);
     //Permite clacular la reflectancia de un pixel de la banda band
-    double RefelctanceCalc(int pixel, int band);
+    float RefelctanceCalc(int pixel, int band);
 private:
     //Apuntador al colector de datos
     MTL_Data_Collector* data_collector;
