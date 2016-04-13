@@ -32,7 +32,8 @@ HEADERS  += include/ui/adminwindow.h \
     include/services/datafinder/mtl_data_collector.h \
     include/services/datafinder/radiances/scene_rad_data.h \
     include/services/datafinder/coordinates/coordinatestable.h \
-    include/calculator/basics_calculations.h
+    include/calculator/basics_calculations.h \
+    include/services/datafinder/mtl_data_collector.h
 
 FORMS    += adminwindow.ui
 
