@@ -25,15 +25,15 @@ SOURCES += main.cpp\
     src/services/datafinder/coordinates/coordinatestable.cpp \
     src/calculator/basics_calculations.cpp
 
-HEADERS  += include/ui/adminwindow.h \
-    include/t_regex/t_regex.h \
-    include/services/search_save_services.h \
-    include/services/queue/pathqueue.h \
-    include/services/datafinder/mtl_data_collector.h \
-    include/services/datafinder/radiances/scene_rad_data.h \
-    include/services/datafinder/coordinates/coordinatestable.h \
-    include/calculator/basics_calculations.h \
-    include/services/datafinder/mtl_data_collector.h
+HEADERS  += \
+    src/calculator/basics_calculations.h \
+    src/t_regex/t_regex.h \
+    src/services/search_save_services.h \
+    src/services/datafinder/mtl_data_collector.h \
+    src/services/datafinder/coordinates/coordinatestable.h \
+    src/services/datafinder/radiances/scene_rad_data.h \
+    src/services/queue/pathqueue.h \
+    src/ui/adminwindow.h
 
 FORMS    += adminwindow.ui
 

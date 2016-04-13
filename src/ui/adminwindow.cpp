@@ -82,11 +82,11 @@ void AdminWindow::on_addButton_clicked(){
 
 void AdminWindow::on_pushButton_clicked()
 {
-    std::string rutaTIFF_1 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B1.TIF";
+    /*std::string rutaTIFF_1 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B1.TIF";
     std::string rutaTIFF_2 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B2.TIF";
     std::string rutaTIFF_3 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B3.TIF";
     std::string rutaLena = "/home/luis/Descargas/sample-opencv/lena.jpg";
-    /* http://docs.opencv.org/3.0-beta/modules/imgcodecs/doc/reading_and_writing_images.html
+    * http://docs.opencv.org/3.0-beta/modules/imgcodecs/doc/reading_and_writing_images.html
     flags –
     Flags specifying the color type of a loaded image:
 
@@ -99,7 +99,7 @@ void AdminWindow::on_pushButton_clicked()
             In the current implementation the alpha channel, if any, is stripped from the output image. Use negative value if you need the alpha channel.
         =0 Return a grayscale image.
         <0 Return the loaded image as is (with alpha channel).
-   */
+
     cv::Mat inputImage_1 = cv::imread(rutaTIFF_1, 0);
     cv::Mat inputImage_2 = cv::imread(rutaTIFF_2, 0);
     cv::Mat inputImage_3 = cv::imread(rutaTIFF_3, 0);
@@ -124,7 +124,7 @@ void AdminWindow::on_pushButton_clicked()
     //qDebug( "begin() es: %d", inputImage.begin() );
     //qDebug( "end() es: %d", inputImage.end() );
 
-    /* Del siguiente link esta la referencia del codigo de lectura :)
+    * Del siguiente link esta la referencia del codigo de lectura :)
      * http://longstryder.com/2014/07/which-way-of-accessing-pixels-in-opencv-is-the-fastest/
      * en el siguiente tambien hay algo de info :) que no es bueno usar .at()
      * http://stackoverflow.com/questions/11977954/opencv-matrix-iteration
@@ -134,7 +134,7 @@ void AdminWindow::on_pushButton_clicked()
      * +++++ y como cabe destacar usé la lectura eficient, la segura esta en el siguiente link
      * http://docs.opencv.org/2.4/doc/tutorials/core/how_to_scan_images/how_to_scan_images.html
      * pero es mas lenta xD :D
-    */
+
 qDebug( "rows: %d, cols: %d", inputLena.rows, inputLena.cols );
     //vamos a iterar la imagen de 3 bandas
     for (int row = 0; row < inputLena.rows; ++row)
@@ -153,7 +153,7 @@ qDebug( "rows: %d, cols: %d", inputLena.rows, inputLena.cols );
 
             ptr += 3;
         }
-    }
+    }*/
 
 
 }
