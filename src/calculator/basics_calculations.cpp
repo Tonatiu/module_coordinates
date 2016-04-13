@@ -1,4 +1,4 @@
-#include "../TT_Admin_3/include/calculator/basics_calculations.h"
+#include "basics_calculations.h"
 
 Basics_Calculations::Basics_Calculations(MTL_Data_Collector *data_collector){
     this->data_collector = data_collector;

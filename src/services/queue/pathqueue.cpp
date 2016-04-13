@@ -1,4 +1,4 @@
-#include "./include/services/queue/pathqueue.h"
+#include "pathqueue.h"
 //Constructor de la clase. Inicializa todos los punteros y el contador
 pathQueue::pathQueue()
 {

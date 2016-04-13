@@ -1,4 +1,4 @@
-#include "./include/t_regex/t_regex.h"
+#include "t_regex.h"
 //Encuentra coincidencias en input de acuerdo a la expresión regular reg_ex
 bool matches(string input, string reg_ex){
     regex_t re;

@@ -1,4 +1,4 @@
-#include "./include/services/datafinder/coordinates/coordinatestable.h"
+#include "coordinatestable.h"
 
 using namespace std;
 

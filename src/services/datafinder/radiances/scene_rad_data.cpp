@@ -1,4 +1,4 @@
-#include "./include/services/datafinder/radiances/scene_rad_data.h"
+#include "scene_rad_data.h"
 
 Scene_Rad_Data::Scene_Rad_Data()
 {

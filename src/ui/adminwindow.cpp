@@ -1,4 +1,4 @@
-#include "./include/ui/adminwindow.h"
+#include "adminwindow.h"
 #include "ui_adminwindow.h"
 #include <opencv2/opencv.hpp>
 

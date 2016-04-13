@@ -3,7 +3,7 @@
 
 #include <math.h>
 #include <boost/date_time/gregorian/gregorian.hpp>
-#include "../TT_Admin_3/include/services/datafinder/mtl_data_collector.h"
+#include "../TT_Admin_3/src/services/datafinder/mtl_data_collector.h"
 
 #define PI 3.1415926535898
 //La clase permite operar los pixeles para obtener su radiancia y refectancia
