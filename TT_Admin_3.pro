@@ -23,7 +23,10 @@ SOURCES += main.cpp\
     src/services/datafinder/mtl_data_collector.cpp \
     src/services/datafinder/radiances/scene_rad_data.cpp \
     src/services/datafinder/coordinates/coordinatestable.cpp \
-    src/calculator/basics_calculations.cpp
+    src/calculator/transforms/basics_calculations.cpp \
+    src/calculator/filters/ndvi_filter.cpp \
+    src/calculator/filters/pm10filter.cpp \
+    src/calculator/filters/filter.cpp
 
 HEADERS  += \
     src/calculator/basics_calculations.h \
@@ -33,7 +36,11 @@ HEADERS  += \
     src/services/datafinder/coordinates/coordinatestable.h \
     src/services/datafinder/radiances/scene_rad_data.h \
     src/services/queue/pathqueue.h \
-    src/ui/adminwindow.h
+    src/ui/adminwindow.h \
+    src/calculator/transforms/basics_calculations.h \
+    src/calculator/filters/ndvi_filter.h \
+    src/calculator/filters/pm10filter.h \
+    src/calculator/filters/filter.h
 
 FORMS    += adminwindow.ui
 

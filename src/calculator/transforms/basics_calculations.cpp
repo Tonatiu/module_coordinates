@@ -4,14 +4,14 @@ Basics_Calculations::Basics_Calculations(MTL_Data_Collector *data_collector){
     this->data_collector = data_collector;
 }
 
-float Basics_Calculations::RadianceCalc(int pixel, int band){
-    //El cálculo de la radiancia es censillo gracias a las constantes que ofrece el MTL
+float Basics_Calculations::RadianceCalc(uchar pixel, int band){
+    //El cálculo de la radiancia es sencillo gracias a las constantes que ofrece el MTL
     double factor = this->data_collector->GetRadData()->Get_Mult_Rads()[band];
     double bias = this->data_collector->GetRadData()->Get_Add_Rads()[band];
     return (float)pixel * factor + bias;
 }
 
-float Basics_Calculations::RefelctanceCalc(int pixel, int band){
+float Basics_Calculations::RefelctanceCalc(uchar pixel, int band){
     int year, month, day;
     string s_year, s_month, s_day;
     double ro;

@@ -16,7 +16,7 @@ using namespace std;
 class MTL_Data_Collector
 {
 public:
-    MTL_Data_Collector(int ID);
+    MTL_Data_Collector();
     //Abre el archivo MTL, permite controlar en caso de que no se logre abrir
     bool OpenMTLFile(string MTL_path);
     //Obtiene y almacena la data del MTL para su posterior uso
@@ -27,13 +27,15 @@ public:
     string GetDate();
     //Regresa el ángulo del sol con respecto a la tierra
     double GetAzimuth();
+    //Regresa el tipo de satélite encotrado
+    string GetSpaceCraft();
 private:
     /*Métdodos privados*/
     //Obtiene el valor almacenado en una línea del MTL
     double GetLineValue(string input);
     /*Propiedades del objeto*/
-    //Identificador del MTL (Quizá no se esté usando para nada)
-    int MTL_ID;
+    //Identificador del tipo de satélite (Landsat 4, 7, 8)
+    string SpaceCraft_ID;
     //El apuntador al archivo MTL
     FILE* mtl_file;
     //La tabla de coordenadas donde se almacenarán las mismas

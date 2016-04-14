@@ -3,9 +3,16 @@
 
 #include <math.h>
 #include <boost/date_time/gregorian/gregorian.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/core/core.hpp>
+#include <vector>
 #include "../TT_Admin_3/src/services/datafinder/mtl_data_collector.h"
 
 #define PI 3.1415926535898
+
+using namespace std;
+using namespace cv;
+
 //La clase permite operar los pixeles para obtener su radiancia y refectancia
 class Basics_Calculations
 {
@@ -13,9 +20,9 @@ public:
     //El cosntructor requiere los datos almacenados en un colector de datos
     Basics_Calculations(MTL_Data_Collector *data_collector);
     //Permite calcular la radiancia de un pixel de la banda band
-    float RadianceCalc(int pixel, int band);
+    float RadianceCalc(uchar pixel, int band);
     //Permite clacular la reflectancia de un pixel de la banda band
-    float RefelctanceCalc(int pixel, int band);
+    float RefelctanceCalc(uchar pixel, int band);
 private:
     //Apuntador al colector de datos
     MTL_Data_Collector* data_collector;

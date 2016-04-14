@@ -77,7 +77,7 @@ void Search_Save_Services::GetDataService(){
     }
     //Invocación a  cada recolector para realizar sus tareas
     for(int i = 0; i < scenesCounter; i++){
-        this->dataCollectors[i] = new MTL_Data_Collector(i);
+        this->dataCollectors[i] = new MTL_Data_Collector();
         //Creacipon del path del archivo de metadata
         string sceneName = this->scene_path_queue.getNext();
         string MTL_path = this->Origin_Path + "/" + sceneName + "/" + sceneName + "_MTL.txt";

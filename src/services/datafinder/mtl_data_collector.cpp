@@ -2,12 +2,11 @@
 
 using namespace std;
 
-MTL_Data_Collector::MTL_Data_Collector(int ID)
+MTL_Data_Collector::MTL_Data_Collector()
 {
     this->mtl_file = NULL;
     this->coors_table = CoordinatesTable();
     this->radiancesData = Scene_Rad_Data();
-    this->MTL_ID = ID;
 }
 //El método recibe un path al archivo que se desea abrir, en caso de error se devuelve un false
 bool MTL_Data_Collector::OpenMTLFile(string MTL_path){
@@ -46,10 +45,11 @@ void MTL_Data_Collector::ObtainData(){
     string Rad_Add_Regex = "RADIANCE_ADD_BAND_([0-9]+)";
     string Aquaired_Date_regex = "DATE_ACQUIRED";
     string Sun_Azimuth_Regex = "SUN_AZIMUTH";
+    string Spacecraft_Type_Regex = "SPACECRAFT_ID";
     //Lectura del MTL línea por línea
     while(fgets(buffer, sizeof(buffer), this->mtl_file) != NULL){
         line = buffer;
-        //Caso en que se localisa una coordenada
+        //Caso en que se localiza una coordenada
         if(matches(line, CoorsRegex)){
             value = this->GetLineValue(line);
             this->coors_table.Add_Coordinate(c_coors, value);
@@ -78,6 +78,13 @@ void MTL_Data_Collector::ObtainData(){
         else if(matches(line, Sun_Azimuth_Regex)){
             this->azimuth = this->GetLineValue(line);
         }
+        //Se localiza el tipo de satélite que tomo la escena
+        else if(matches(line, Spacecraft_Type_Regex)){
+            line = line.substr(0, line.length() - 2);
+            size_t pos = line.find("=") + 3;
+            line = line.substr(pos);
+            this->SpaceCraft_ID = line;
+        }
     }
 }
 
@@ -91,4 +98,8 @@ Scene_Rad_Data* MTL_Data_Collector::GetRadData(){
 
 string MTL_Data_Collector::GetDate(){
     return this->date;
+}
+
+string MTL_Data_Collector::GetSpaceCraft(){
+    return this->SpaceCraft_ID;
 }
