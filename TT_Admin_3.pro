@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,7 +26,16 @@ SOURCES += main.cpp\
     src/calculator/transforms/basics_calculations.cpp \
     src/calculator/filters/ndvi_filter.cpp \
     src/calculator/filters/pm10filter.cpp \
-    src/calculator/filters/filter.cpp
+    src/calculator/filters/filter.cpp \
+    src/search_save_services.cpp \
+    ../../TT/workspace (2)/src/geographic/BoundingBox.cc \
+    ../../TT/workspace (2)/src/geographic/Coords.cc \
+    ../../TT/workspace (2)/src/geographic/GeoPoint.cc \
+    ../../TT/workspace (2)/src/geographic/GeoPolygon.cc \
+    ../../TT/workspace (2)/src/geographic/BoundingBox.cc \
+    ../../TT/workspace (2)/src/geographic/Coords.cc \
+    ../../TT/workspace (2)/src/geographic/GeoPoint.cc \
+    ../../TT/workspace (2)/src/geographic/GeoPolygon.cc
 
 HEADERS  += \
     src/calculator/basics_calculations.h \
@@ -40,7 +49,15 @@ HEADERS  += \
     src/calculator/transforms/basics_calculations.h \
     src/calculator/filters/ndvi_filter.h \
     src/calculator/filters/pm10filter.h \
-    src/calculator/filters/filter.h
+    src/calculator/filters/filter.h \
+    ../../TT/workspace (2)/src/geographic/BoundingBox.h \
+    ../../TT/workspace (2)/src/geographic/Coords.h \
+    ../../TT/workspace (2)/src/geographic/GeoPoint.h \
+    ../../TT/workspace (2)/src/geographic/GeoPolygon.h \
+    ../../TT/workspace (2)/src/geographic/BoundingBox.h \
+    ../../TT/workspace (2)/src/geographic/Coords.h \
+    ../../TT/workspace (2)/src/geographic/GeoPoint.h \
+    ../../TT/workspace (2)/src/geographic/GeoPolygon.h
 
 FORMS    += adminwindow.ui
 

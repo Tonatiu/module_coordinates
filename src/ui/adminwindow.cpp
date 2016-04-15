@@ -1,6 +1,7 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
 #include <opencv2/opencv.hpp>
+#include <QSqlDatabase>
 
 AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -82,6 +83,37 @@ void AdminWindow::on_addButton_clicked(){
 
 void AdminWindow::on_pushButton_clicked()
 {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
+    db.setHostName("localhost");
+    db.setDatabaseName("municipios");
+    db.setUserName("postgres");
+    db.setPassword("root");
+    bool ok = db.open();
+    if(ok==true){
+        qDebug("se realizo la conexino a la base de datos! :D");
+    }
+    else{
+        qWarning("Error");
+    }
+    // ///////////////////////////////////////7
+
+    /*QSqlDatabase *db = new QSqlDatabase();
+    db->addDatabase("QPSQL");
+    qDebug()<<db->driverName();
+    qDebug()<<db->drivers();
+    db->setHostName("localhost");
+    db->setDatabaseName("mydb");
+    db->setUserName("brochadinho");
+    db->setPassword("12345");
+    qDebug() << qApp->libraryPaths();
+    bool ok = db->open("brochadinho","12345");
+    if(ok==true){
+    qDebug()<<"sucesso a ligar a base de dados de teste";
+    }else{
+    qWarning()<<"Erro"<<db->lastError().text();
+    }
+    */
+
     /*std::string rutaTIFF_1 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B1.TIF";
     std::string rutaTIFF_2 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B2.TIF";
     std::string rutaTIFF_3 = "/home/luis/Documentos/SatellitalImages/LE70270472003048EDC00/LE70270472003048EDC00_B3.TIF";
