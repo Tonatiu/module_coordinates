@@ -2,8 +2,8 @@
 #define FILTER_H
 
 #include "../transforms/basics_calculations.h"
-#include "../TT_Admin_3/src/services/datafinder/mtl_data_collector.h"
-#include "../TT_Admin_3/src/t_regex/t_regex.h"
+#include "src/services/datafinder/mtl_data_collector.h"
+#include "src/t_regex/t_regex.h"
 
 //Definidos para landsat x < 8
 #define BLU_BAND 1

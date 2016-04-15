@@ -6,7 +6,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <vector>
-#include "../TT_Admin_3/src/services/datafinder/mtl_data_collector.h"
+#include "../../../src/services/datafinder/mtl_data_collector.h"
 
 #define PI 3.1415926535898
 

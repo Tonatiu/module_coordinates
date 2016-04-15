@@ -1,7 +1,7 @@
 #ifndef NDVI_FILTER_H
 #define NDVI_FILTER_H
 
-#include "../TT_Admin_3/src/calculator/filters/filter.h"
+#include "src/calculator/filters/filter.h"
 
 class NDVI_Filter : public Filter
 {
