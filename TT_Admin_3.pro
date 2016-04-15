@@ -31,7 +31,6 @@ SOURCES += main.cpp\
 HEADERS  += \
     src/calculator/basics_calculations.h \
     src/t_regex/t_regex.h \
-    src/services/search_save_services.h \
     src/services/datafinder/mtl_data_collector.h \
     src/services/datafinder/coordinates/coordinatestable.h \
     src/services/datafinder/radiances/scene_rad_data.h \
@@ -40,7 +39,8 @@ HEADERS  += \
     src/calculator/transforms/basics_calculations.h \
     src/calculator/filters/ndvi_filter.h \
     src/calculator/filters/pm10filter.h \
-    src/calculator/filters/filter.h
+    src/calculator/filters/filter.h \
+    src/services/search_save_services.h
 
 FORMS    += adminwindow.ui
 
