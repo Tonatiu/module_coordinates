@@ -1,6 +1,6 @@
 #ifndef SEARCH_SAVE_SERVICES_H
 #define SEARCH_SAVE_SERVICES_H
-//Hola
+
 #include "./src/services/queue/pathqueue.h"
 #include "./src/services/datafinder/mtl_data_collector.h"
 
