@@ -13,7 +13,7 @@ TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include/opencv
                /usr/local/include/opencv2
-LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lpqxx -lpq
 
 SOURCES += main.cpp\
     src/ui/adminwindow.cpp \
@@ -27,6 +27,11 @@ SOURCES += main.cpp\
     src/calculator/filters/ndvi_filter.cpp \
     src/calculator/filters/pm10filter.cpp \
     src/calculator/filters/filter.cpp \
+    src/poligons_module/geographic/GeoPolygon.cc \
+    src/poligons_module/geographic/GeoPoint.cc \
+    src/poligons_module/geographic/Coords.cc \
+    src/poligons_module/geographic/BoundingBox.cc \
+    src/poligons_module/postgis/PostgisFunctions.cc
 
 
 HEADERS  += src/ui/adminwindow.h \
@@ -40,6 +45,13 @@ HEADERS  += src/ui/adminwindow.h \
     src/calculator/filters/ndvi_filter.h \
     src/calculator/filters/pm10filter.h \
     src/calculator/filters/filter.h \
+    src/poligons_module/geographic/GeoPolygon.h \
+    src/poligons_module/geographic/GeoPoint.h \
+    src/poligons_module/geographic/Coords.h \
+    src/poligons_module/geographic/BoundingBox.h \
+    src/poligons_module/postgis/PostgisFunctions.h \
+    src/poligons_module/postgis/postgis.h \
+    src/poligons_module/postgis/entity/Municipio.h
 
 FORMS    += adminwindow.ui
 

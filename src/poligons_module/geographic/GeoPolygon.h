@@ -5,7 +5,7 @@
 
 #ifndef _GEOGRAPHIC_GEO_POLYGON_H_
     #define _GEOGRAPHIC_GEO_POLYGON_H_
-
+	/*La clase define un arreglo de coordenadas que pertenecen a un polígono que encierran a un punto geográfico*/
     class GeoPolygon{
         Coords *coords;
         
@@ -15,10 +15,11 @@
         std::string text;
         
         public:
+			/*Constructores de clase*/
             GeoPolygon();
             GeoPolygon(int, std::string srid = "4326");
             GeoPolygon(std::string, std::string srid = "4326");
-            
+            /*Regresa el arreglo de coordenadas*/
             Coords * getCoords(){
                 return coords;
             }

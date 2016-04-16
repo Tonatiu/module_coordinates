@@ -5,7 +5,7 @@
 #ifndef _POSTGIS_ENTITY_MUNICIPIO_H_
     
     #define _POSTGIS_ENTITY_MUNICIPIO_H_
-    
+    /*Define un polígono perteneciente a un municipío*/
     class Municipio{
         GeoPolygon geometry;
         std::string entidad;
