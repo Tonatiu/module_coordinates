@@ -13,7 +13,7 @@ TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include/opencv
                /usr/local/include/opencv2
-LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lpqxx -lpq
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lpqxx -lpq -pthread
 
 SOURCES += main.cpp\
     src/ui/adminwindow.cpp \
@@ -31,7 +31,11 @@ SOURCES += main.cpp\
     src/poligons_module/geographic/GeoPoint.cc \
     src/poligons_module/geographic/Coords.cc \
     src/poligons_module/geographic/BoundingBox.cc \
-    src/poligons_module/postgis/PostgisFunctions.cc
+    src/poligons_module/postgis/PostgisFunctions.cc \
+    src/ui/statusbar.cpp \
+    src/services/copy_service/copy_service.cpp \
+    src/sceneprocesor/image_processor/sceneprocessor.cpp \
+    src/sceneprocesor/processingthread.cpp
 
 
 HEADERS  += src/ui/adminwindow.h \
@@ -51,8 +55,13 @@ HEADERS  += src/ui/adminwindow.h \
     src/poligons_module/geographic/BoundingBox.h \
     src/poligons_module/postgis/PostgisFunctions.h \
     src/poligons_module/postgis/postgis.h \
-    src/poligons_module/postgis/entity/Municipio.h
+    src/poligons_module/postgis/entity/Municipio.h \
+    src/ui/statusbar.h \
+    src/services/copy_service/copy_service.h \
+    src/sceneprocesor/image_processor/sceneprocessor.h \
+    src/sceneprocesor/processingthread.h
 
-FORMS    += adminwindow.ui
+FORMS    += adminwindow.ui \
+    statusbar.ui
 
 CONFIG += c++11

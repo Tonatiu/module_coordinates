@@ -17,7 +17,7 @@ using namespace pqxx;
     class PostgisFunctions{
         public:
 			/*Regresa un polígono dados dos puntos geográficos*/
-            static GeoPolygon getBounds(GeoPoint, GeoPoint);
+            static GeoPolygon getBounds(GeoPoint p1, GeoPoint p2);
 			/*Devuelve un vector de todos los municipios encontrados en una escena satelital*/
             static std::vector<Municipio> getMunicipiosContained(GeoPolygon);
             static std::string getTableSrid(std::string, std::string);

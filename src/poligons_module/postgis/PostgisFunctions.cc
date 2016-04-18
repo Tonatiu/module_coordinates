@@ -174,14 +174,14 @@ GeoPolygon PostgisFunctions::getBounds(GeoPoint p1, GeoPoint p2){
             
             /*    Creamos consulta  */
             std::string sql = "SELECT ST_AsText( ST_Envelope( ST_Collect(";
-            
+
             //p1
             sql.append("ST_GeomFromText('");
             sql.append(p1.asText());
             sql.append("')");
-            
+
             sql.append(",");
-            
+
             //p2
             sql.append("ST_GeomFromText('");
             sql.append(p2.asText());
