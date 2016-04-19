@@ -4,7 +4,13 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QProgressBar>
+#include <opencv2/opencv.hpp>
+#include <QSqlDatabase>
 #include "./src/services/search_save_services.h"
+#include "ui_adminwindow.h"
+#include "../services/copy_service/copy_service.h"
+#include "statusbar.h"
 
 namespace Ui {
 class AdminWindow;
@@ -24,10 +30,8 @@ private slots:
     void on_toolButton_clicked();
 
     void on_addButton_clicked();
-
-    void on_pushButton_clicked();
-
 private:
+    QProgressBar *bar;
     Ui::AdminWindow *ui;
     Search_Save_Services service;
     std::string status = "Status: ";

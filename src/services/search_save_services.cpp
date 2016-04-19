@@ -34,27 +34,7 @@ bool Search_Save_Services::SearchScenesService(string path){
 
     return false;
 }
-//Permite copiar lo almacenado en scene_path_queue al destino especificado por destiny_path
-bool Search_Save_Services::CopyService(string destiny_path){
-    int queueLength = this->scene_path_queue.getLength();
-    this->Destny_Path = destiny_path;
-    string origin;
-    //Inicialización del comando para copiar
-    string command = "cp -r ";
-    //Copiado de los elementos en scene_path_queue
-    for(int i = 0; i < queueLength; i++){
-        //Se concatena el path de origen con el nombre de la escena (la carpeta que la contiene)
-        origin = this->Origin_Path + this->scene_path_queue.getNext();
-        string copy = command + origin + " " + destiny_path;
-        //Copia la carpeta de origen al destino especificado
-        int copyCheck = system(copy.c_str());
-        //Si algun elemento no se puede copiar por alguna razón devuelve false
-        if(copyCheck != 0)
-            return false;
-    }
-    //Regresa true si todos los copiados fueron exitosos
-    return true;
-}
+
 
 //Busca en path objetos que concuerdan con reg_ex por medio del comando ls y regresa un apuntador a FILE
 FILE *Search_Save_Services::SearchService(string path, string reg_ex){
@@ -94,4 +74,12 @@ bool Search_Save_Services::QueueisEmpty(){
 //Obtiene la longitud de la cola
 int Search_Save_Services::getQueueLength(){
     return this->scene_path_queue.getLength();
+}
+
+string Search_Save_Services::GetOriginPath(){
+    return this->Origin_Path;
+}
+
+pathQueue* Search_Save_Services::GetQueue(){
+    return &this->scene_path_queue;
 }

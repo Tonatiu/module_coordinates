@@ -13,7 +13,7 @@ TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include/opencv
                /usr/local/include/opencv2
-LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lpqxx -lpq -pthread
 
 SOURCES += main.cpp\
     src/ui/adminwindow.cpp \
@@ -27,41 +27,41 @@ SOURCES += main.cpp\
     src/calculator/filters/ndvi_filter.cpp \
     src/calculator/filters/pm10filter.cpp \
     src/calculator/filters/filter.cpp \
-    src/search_save_services.cpp \
-    ../../TT/workspace (2)/src/geographic/BoundingBox.cc \
-    ../../TT/workspace (2)/src/geographic/Coords.cc \
-    ../../TT/workspace (2)/src/geographic/GeoPoint.cc \
-    ../../TT/workspace (2)/src/geographic/GeoPolygon.cc \
-    ../../TT/workspace (2)/src/geographic/BoundingBox.cc \
-    ../../TT/workspace (2)/src/geographic/Coords.cc \
-    ../../TT/workspace (2)/src/geographic/GeoPoint.cc \
-    ../../TT/workspace (2)/src/geographic/GeoPolygon.cc
+    src/poligons_module/geographic/GeoPolygon.cc \
+    src/poligons_module/geographic/GeoPoint.cc \
+    src/poligons_module/geographic/Coords.cc \
+    src/poligons_module/geographic/BoundingBox.cc \
+    src/poligons_module/postgis/PostgisFunctions.cc \
+    src/ui/statusbar.cpp \
+    src/services/copy_service/copy_service.cpp \
+    src/sceneprocesor/image_processor/sceneprocessor.cpp \
+    src/sceneprocesor/processingthread.cpp
 
-HEADERS  += \
-    src/calculator/basics_calculations.h \
+
+HEADERS  += src/ui/adminwindow.h \
     src/t_regex/t_regex.h \
-    src/services/datafinder/mtl_data_collector.h \
-    src/services/datafinder/coordinates/coordinatestable.h \
-    src/services/datafinder/radiances/scene_rad_data.h \
+    src/services/search_save_services.h\
     src/services/queue/pathqueue.h \
-    src/ui/adminwindow.h \
+    src/services/datafinder/mtl_data_collector.h \
+    src/services/datafinder/radiances/scene_rad_data.h \
+    src/services/datafinder/coordinates/coordinatestable.h \
     src/calculator/transforms/basics_calculations.h \
     src/calculator/filters/ndvi_filter.h \
     src/calculator/filters/pm10filter.h \
     src/calculator/filters/filter.h \
-<<<<<<< HEAD
-    src/services/search_save_services.h
-=======
-    ../../TT/workspace (2)/src/geographic/BoundingBox.h \
-    ../../TT/workspace (2)/src/geographic/Coords.h \
-    ../../TT/workspace (2)/src/geographic/GeoPoint.h \
-    ../../TT/workspace (2)/src/geographic/GeoPolygon.h \
-    ../../TT/workspace (2)/src/geographic/BoundingBox.h \
-    ../../TT/workspace (2)/src/geographic/Coords.h \
-    ../../TT/workspace (2)/src/geographic/GeoPoint.h \
-    ../../TT/workspace (2)/src/geographic/GeoPolygon.h
->>>>>>> 8af42490c2bfe4f0da0153faf179925497dfefa3
+    src/poligons_module/geographic/GeoPolygon.h \
+    src/poligons_module/geographic/GeoPoint.h \
+    src/poligons_module/geographic/Coords.h \
+    src/poligons_module/geographic/BoundingBox.h \
+    src/poligons_module/postgis/PostgisFunctions.h \
+    src/poligons_module/postgis/postgis.h \
+    src/poligons_module/postgis/entity/Municipio.h \
+    src/ui/statusbar.h \
+    src/services/copy_service/copy_service.h \
+    src/sceneprocesor/image_processor/sceneprocessor.h \
+    src/sceneprocesor/processingthread.h
 
-FORMS    += adminwindow.ui
+FORMS    += adminwindow.ui \
+    statusbar.ui
 
 CONFIG += c++11

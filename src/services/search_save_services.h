@@ -1,6 +1,6 @@
 #ifndef SEARCH_SAVE_SERVICES_H
 #define SEARCH_SAVE_SERVICES_H
-//Hola
+
 #include "./src/services/queue/pathqueue.h"
 #include "./src/services/datafinder/mtl_data_collector.h"
 
@@ -13,14 +13,17 @@ public:
     //Permite buscar las carpetas que contienen las escenas satelitales
     bool SearchScenesService(string path);
     //Permite realizar el copiado de las escenas encontradas por el método anterior a una ubicación
-    //definida por destiny_path
-    bool CopyService(string destiny_path);
+
     //Obtiene los datos de las escenas satelitales para su posterior uso
     void GetDataService();
     //Permite conocer el número actual de elementos en la cola de paths
     int getQueueLength();
     //Permite saber si la cola está vacía
     bool QueueisEmpty();
+    //Devuelve la cola de los paths
+    pathQueue* GetQueue();
+    //Regresa el path de origen
+    string GetOriginPath();
 private:
     //Métodos privados
     //Busca en path los directorios o archivos que concuerden con reg_ex
