@@ -1,21 +1,25 @@
 #include <iostream>
+#include <string>
+
 #include "Coords.h"
+#include <vector>
+
+using namespace std;
 
 #ifndef _GEOGRAPHIC_BOUNDINGBOX_H_
     #define _GEOGRAPHIC_BOUNDINGBOX_H_
     
-	/*La clase almacena los cuatro puntos de una escena satelital*/
+    
     class BoundingBox{
-		//Puntos de la escena
         Coords left_top, right_top, right_bottom, left_bottom;
         
         public:
-			//Constructores de clase
-            BoundingBox(Coords,Coords);
+            BoundingBox(){}
             BoundingBox(Coords,Coords,Coords,Coords);
-			//Imprime los puntos de la escena
-            void print();
-			/*Setters y getters de la clase*/
+            BoundingBox(vector<Coords>);
+            
+            string getPolygonWKT();
+            
             void setLeftTop(Coords coords){
                 left_top = coords;
             }

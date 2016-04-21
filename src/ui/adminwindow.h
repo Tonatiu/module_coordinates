@@ -10,7 +10,7 @@
 #include "./src/services/search_save_services.h"
 #include "ui_adminwindow.h"
 #include "../services/copy_service/copy_service.h"
-#include "statusbar.h"
+#include "../services/filter/datafilter.h"
 
 namespace Ui {
 class AdminWindow;
@@ -31,11 +31,11 @@ private slots:
 
     void on_addButton_clicked();
 private:
-    QProgressBar *bar;
     Ui::AdminWindow *ui;
     Search_Save_Services service;
     std::string status = "Status: ";
     std::string queueLength;
+    SceneDataRelations scene_data_relations;
 };
 
 #endif // ADMINWINDOW_H

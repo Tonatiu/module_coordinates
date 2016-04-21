@@ -1,26 +1,27 @@
 #include "sceneprocessor.h"
 
-SceneProcessor::SceneProcessor(string origin_path, string scene_name)
+SceneProcessor::SceneProcessor(string origin_path, string scene_name, SceneDataRelations *relations)
 {
     this->origin_path = origin_path;
     this->scene_name = scene_name;
+    this->relations = relations;
 }
 
-void SceneProcessor::GetMTLData(){
-    //Genera un objeto colector
-    this->collector = new MTL_Data_Collector();
-    string MTL_path = this->origin_path + "/" + this->scene_name + "/" + this->scene_name + "_MTL.txt";
-
-    if(this->collector->OpenMTLFile(MTL_path)){
-        this->collector->ObtainData();
-    }
-
+Mat SceneProcessor::OpenBand(int band){
+    string band_path = this->origin_path + this->scene_name + "/" + this->scene_name + "_B" + to_string(band) + ".TIF";
+    return imread(band_path);
 }
 
-MTL_Data_Collector *SceneProcessor::GetCollector(){
-    return this->collector;
+
+void SceneProcessor::AplyEnviromentalFilters(){
+    PM10Filter filterpm10;
+    NDVI_Filter filterndvi;
+    double PM10_prom, ndvi_prom;
+
+
+
 }
 
 void SceneProcessor::run(){
-    this->GetMTLData();
+
 }

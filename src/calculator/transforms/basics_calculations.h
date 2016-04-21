@@ -23,6 +23,7 @@ public:
     float RadianceCalc(uchar pixel, int band);
     //Permite clacular la reflectancia de un pixel de la banda band
     float RefelctanceCalc(uchar pixel, int band);
+
 private:
     //Apuntador al colector de datos
     MTL_Data_Collector* data_collector;

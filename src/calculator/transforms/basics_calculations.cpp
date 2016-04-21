@@ -17,9 +17,9 @@ float Basics_Calculations::RefelctanceCalc(uchar pixel, int band){
     double ro;
     double radiance, sun_distance;
     //Obtención de los valores YY MM dd de forma individual a partir de la fecha obtenida del colector de datos
-    s_year = this->data_collector->GetDate().substr(0, 4);
-    s_month = this->data_collector->GetDate().substr(5, 7);
-    s_day = this->data_collector->GetDate().substr(8, 10);
+    s_year = this->data_collector->GetAquiredDate().substr(0, 4);
+    s_month = this->data_collector->GetAquiredDate().substr(5, 7);
+    s_day = this->data_collector->GetAquiredDate().substr(8, 10);
     //Conversiones de strings a valores enteros
     year = atoi(s_year.c_str());
     month = atoi(s_month.c_str());

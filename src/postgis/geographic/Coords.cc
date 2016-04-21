@@ -27,6 +27,19 @@ double Coords::getLng(){
 }
 
 
-void Coords::print(){
-    std::cout << "lat=" << lat << " lng=" << lng << std::endl;
+string Coords::toString(){
+    ostringstream strs_lat;
+    ostringstream strs_lng;
+    
+    strs_lng << lng;
+    string str_lng = strs_lng.str();
+    
+    strs_lat << lat;
+    string str_lat = strs_lat.str();
+
+    string text(str_lng);
+    text.append(" ");
+    text.append(str_lat);
+    
+    return text;
 }
