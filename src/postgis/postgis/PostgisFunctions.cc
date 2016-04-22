@@ -317,8 +317,8 @@ BoundingBox parseBoundingBox(char *coords){
         
         switch(i){
             case 0:{
-                left_bottom.setLat(lat);
-                left_bottom.setLng(lng);
+            right_bottom.setLat(lat);
+            right_bottom.setLng(lng);
                 break;
             }
             case 1:{
@@ -332,8 +332,8 @@ BoundingBox parseBoundingBox(char *coords){
                 break;
             }
             case 3:{
-                right_bottom.setLat(lat);
-                right_bottom.setLng(lng);
+                left_bottom.setLat(lat);
+                left_bottom.setLng(lng);
                 break;
             }
         }

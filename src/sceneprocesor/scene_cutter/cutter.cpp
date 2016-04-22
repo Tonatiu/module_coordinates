@@ -1,11 +1,11 @@
 #include "cutter.h"
-
+/*Esta es la funcin de LUIS, para localizar los pixeles de un rea objetivo*/
 InfoObjetivo *CoorsToPixel(BoundingBox target, int img_high, int img_width, BoundingBox container){
    double difLatitudesImagenBound_Up = container.getLeftTop().getLat() - target.getLeftTop().getLat();
    // lo escribo alrevez para obtener un valor positivo
    double difLongitudesImagenBound_Up = target.getLeftTop().getLng() - container.getLeftTop().getLng();
 
-   double difLatitudesImagen = container.getLeftTop().getLat() - target.getRightBottom().getLat();
+   double difLatitudesImagen = container.getLeftTop().getLat() - container.getRightBottom().getLat();
    // lo escribo alrevez para obtener un valor positivo
    double difLongitudesImagen = container.getRightBottom().getLng() - container.getLeftTop().getLng();
 
