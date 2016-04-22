@@ -1,34 +1,20 @@
 #include "copy_service.h"
 
-Copy_Service::Copy_Service(pathQueue *queue, string destiny_path, string origin_path)
+Copy_Service::Copy_Service(vector<string> *queue, string destiny_path, string origin_path)
 {
     this->scene_path_queue = queue;
     this->Destiny_Path = destiny_path;
     this->Origin_Path = origin_path;
 }
 
-//Permite copiar lo almacenado en scene_path_queue al destino especificado por destiny_path
-bool Copy_Service::CopyTo(string file_name){
-    string origin;
-    //Inicialización del comando para copiar
-    string command = "cp -r ";
-    //Se concatena el path de origen con el nombre de la escena (la carpeta que la contiene)
-    origin = this->Origin_Path + file_name;
-    string copy = command + origin + " " + this->Destiny_Path;
-    //Copia la carpeta de origen al destino especificado
-    //Se retorna false si hubo un error
-    return (system(copy.c_str()) != -1);
-}
-
 void Copy_Service::run(){
-    int num_scenes = this->scene_path_queue->getLength();
-    if(num_scenes <= 0)
+    if(scene_path_queue->empty())
         return;
-    for(int i = 0; (i < num_scenes) && this->running; i++){
-        if(this->running){
-            //Comprueba que todos los elementos se hayan copiado de forma correcta, en caso contrario el status será false
-            this->copy_status &= this->CopyTo(this->scene_path_queue->getNext());
-        }
+    for(int i = 0; (i < scene_path_queue->size()) && this->running; i++){
+        string filename = (*this->scene_path_queue)[i];
+        CopyThread *copy_thread = new CopyThread(this->Origin_Path, this->Destiny_Path, filename);
+        copy_thread->start();
+        copy_thread->wait();
     }
 }
 

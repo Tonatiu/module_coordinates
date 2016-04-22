@@ -14,7 +14,7 @@
 class Filter
 {
 public:
-    Filter(MTL_Data_Collector* collector);
+    Filter(MTL_Data_Collector *collector);
 protected:
     Basics_Calculations* basicCalcs;
     bool isL8;
