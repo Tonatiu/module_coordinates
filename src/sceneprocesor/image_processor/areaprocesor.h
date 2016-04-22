@@ -8,24 +8,27 @@
 #include "../../calculator/filters/pm10filter.h"
 #include "../../postgis/postgis/entity/AreaObjetivo.h"
 #include "../../postgis/geographic/BoundingBox.h"
+#include "../../postgis/postgis/PostgisFunctions.h"
 #include "../scene_cutter/cutter.h"
 #include "../scene_cutter/infoobjetivo.h"
 #include "bandscontainer.h"
 
 using namespace cv;
 
-class AreaProcesor: QThread
+class AreaProcesor: public QThread
 {
 public:
-    AreaProcesor(BandsContainer* Bands, AreaObjetivo* target, BoundingBox* containerbounds);
+    AreaProcesor(BandsContainer* Bands, AreaObjetivo target, BoundingBox containerbounds, PM10Filter* filter_pm10, NDVI_Filter* filter_ndvi);
 private:
     void run();
-    void ApliFilters();
+    void AplyFilters();
     BandsContainer* Bands;
-    AreaObjetivo *target;
-    BoundingBox* countainer_bounds;
-    float pm10_prom;
-    float ndvi_prom;
+    AreaObjetivo target;
+    BoundingBox countainer_bounds;
+    QMutex mutex;
+    PostgisFunctions functions_to_postgis;
+    PM10Filter* filter_pm10;
+    NDVI_Filter* filter_ndvi;
 };
 
 #endif // AREAPROCESOR_H

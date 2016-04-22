@@ -21,6 +21,25 @@ string SceneDataRelations::GetFileNameByID(int id){
     return this->file_names[id];
 }
 
+string SceneDataRelations::GetLastFileName(){
+    string to_return = this->file_names.back();
+    this->file_names.pop_back();
+    return to_return;
+
+}
+
+vector<AreaObjetivo> SceneDataRelations::GetLastsTargets(){
+    vector<AreaObjetivo> lasts_targets = this->scene_targets.back();
+    scene_targets.pop_back();
+    return lasts_targets;
+}
+
+MTL_Data_Collector SceneDataRelations::GetLastCollector(){
+    MTL_Data_Collector last_collector = this->collectors.back();
+    collectors.pop_back();
+    return last_collector;
+}
+
 void SceneDataRelations::EraseFileByID(int id){
     this->file_names.erase(file_names.begin() + id);
 }

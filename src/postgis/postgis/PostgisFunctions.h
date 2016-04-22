@@ -10,6 +10,7 @@
 #include "../geographic/GeoPoint.h"
 #include "../geographic/BoundingBox.h"
 #include "entity/AreaObjetivo.h"
+#include <QtCore>
 
 using namespace std;
 using namespace pqxx;
@@ -27,6 +28,8 @@ public:
     static string getTableSrid(string, string geometry_column = "geom");
     static GeoPolygon getBounds(GeoPoint, GeoPoint);
     static vector<AreaObjetivo> getAreasObjetivo(BoundingBox);
-    static bool insertAreaObjetivo(AreaObjetivo);
+    bool insertAreaObjetivo(AreaObjetivo);
+private:
+    QMutex mutex;
 };
 #endif

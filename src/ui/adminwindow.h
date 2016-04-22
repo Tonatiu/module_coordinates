@@ -11,6 +11,7 @@
 #include "ui_adminwindow.h"
 #include "../services/copy_service/copy_service.h"
 #include "../services/filter/datafilter.h"
+#include "../sceneprocesor/processingthread.h"
 
 namespace Ui {
 class AdminWindow;

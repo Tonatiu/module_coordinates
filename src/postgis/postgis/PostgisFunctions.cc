@@ -210,42 +210,43 @@ GeoPolygon PostgisFunctions::getBounds(GeoPoint p1, GeoPoint p2){
 bool PostgisFunctions::insertAreaObjetivo(AreaObjetivo areaObjetivo){
     
     try{
-        /* Creamos la conexión  */
-        connection C( POSTGIS_QUERY_CONNECTION );
-        
-        if( !C.is_open() ){
-            return false;
-        }
-        
-        string sql = "INSERT INTO transition(data,the_geom) VALUES ('";
-        sql.append("{");
-        
-        sql.append( propertyToString("entidad", areaObjetivo.getEntidad()));
-        sql.append( propertyToString("municipio", areaObjetivo.getMunicipio()));
-        sql.append( propertyToString("localidad", areaObjetivo.getLocalidad()));
-        
-        sql.append( propertyToString("calidad", areaObjetivo.getCalidad()));
-        sql.append( propertyToString("nubosidad", areaObjetivo.getNubosidad()));
-        sql.append( propertyToString("vegetacion", areaObjetivo.getPorcentajeVegetacion()));
-        sql.append( propertyToString("contaminacion", areaObjetivo.getPorcentajeContaminacion()));
-        
-        sql.append( propertyToString("scene_id", areaObjetivo.getId()));
-        sql.append( propertyToString("scene_date_temp", areaObjetivo.getDateAcquired()));
-        sql.append( propertyToString("scene_time", areaObjetivo.getSceneCenterTime(), true));
-        
-        sql.append("}");
-        sql.append("',ST_GeomFromText('");
-        sql.append(areaObjetivo.getGeometry().getGeomText());
-        sql.append("',4326))");
-        
-        /* Create a transactional object. */
-        work W(C);
-        
-        /* Execute SQL query */
-        W.exec( sql );
-        W.commit();
-        C.disconnect ();
-        
+        mutex.lock();
+            /* Creamos la conexión  */
+            connection C( POSTGIS_QUERY_CONNECTION );
+
+            if( !C.is_open() ){
+                return false;
+            }
+
+            string sql = "INSERT INTO transition(data,the_geom) VALUES ('";
+            sql.append("{");
+
+            sql.append( propertyToString("entidad", areaObjetivo.getEntidad()));
+            sql.append( propertyToString("municipio", areaObjetivo.getMunicipio()));
+            sql.append( propertyToString("localidad", areaObjetivo.getLocalidad()));
+
+            sql.append( propertyToString("calidad", areaObjetivo.getCalidad()));
+            sql.append( propertyToString("nubosidad", areaObjetivo.getNubosidad()));
+            sql.append( propertyToString("vegetacion", areaObjetivo.getPorcentajeVegetacion()));
+            sql.append( propertyToString("contaminacion", areaObjetivo.getPorcentajeContaminacion()));
+
+            sql.append( propertyToString("scene_id", areaObjetivo.getId()));
+            sql.append( propertyToString("scene_date_temp", areaObjetivo.getDateAcquired()));
+            sql.append( propertyToString("scene_time", areaObjetivo.getSceneCenterTime(), true));
+
+            sql.append("}");
+            sql.append("',ST_GeomFromText('");
+            sql.append(areaObjetivo.getGeometry().getGeomText());
+            sql.append("',4326))");
+
+            /* Create a transactional object. */
+            work W(C);
+
+            /* Execute SQL query */
+            W.exec( sql );
+            W.commit();
+            C.disconnect ();
+        mutex.unlock();
         return true;
     }catch (const std::exception &e){
         cerr << e.what() << std::endl;

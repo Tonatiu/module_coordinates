@@ -19,6 +19,12 @@ public:
     vector<string>* GetFileNames();
     //Regresa el nombre de una escena almacenado en la posición id
     string GetFileNameByID(int id);
+    //Devuelve el último elemento en la lista de escenas
+    string GetLastFileName();
+    //Regresa el último vector de áreas objetivo
+    vector<AreaObjetivo> GetLastsTargets();
+    //Devuelve el último colector de datos
+    MTL_Data_Collector GetLastCollector();
     //Borra el nombre de escena de la posición id
     void EraseFileByID(int id);
     //Inserta un colector en la colección de colectores

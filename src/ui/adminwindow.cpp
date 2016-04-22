@@ -73,10 +73,13 @@ void AdminWindow::on_addButton_clicked(){
             DataFilter filter;
             filter.AplyFilter(&this->scene_data_relations, this->service.GetOriginPath());
             //Copiado de escenas al destino predefinido
-            /*Copy_Service* copy_service = new Copy_Service(this->service.GetQueue(), scenes_destiny, this->service.GetOriginPath());
+            Copy_Service* copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), scenes_destiny, this->service.GetOriginPath());
             copy_service->start();
             copy_service->wait();
-            if(copy_service->GetStatus()){
+            //El proceso se encarga de procesar las escenas y almacenar los datos en postgis
+            ProcessingThread* scene_process_thread = new ProcessingThread(&this->scene_data_relations, scenes_destiny);
+            scene_process_thread->start();
+            /*if(copy_service->GetStatus()){
                 QMessageBox::information(this, "Copiado exitoso", "Las escenas se han añadido correctamente");
             }
             else{

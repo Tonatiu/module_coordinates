@@ -25,7 +25,6 @@ SOURCES += main.cpp\
     src/calculator/transforms/basics_calculations.cpp \
     src/calculator/filters/ndvi_filter.cpp \
     src/calculator/filters/pm10filter.cpp \
-    src/ui/statusbar.cpp \
     src/services/copy_service/copy_service.cpp \
     src/sceneprocesor/image_processor/sceneprocessor.cpp \
     src/sceneprocesor/processingthread.cpp \
@@ -40,7 +39,8 @@ SOURCES += main.cpp\
     src/sceneprocesor/scene_cutter/infoobjetivo.cpp \
     src/relations/scenedatarelations.cpp \
     src/sceneprocesor/image_processor/areaprocesor.cpp \
-    src/sceneprocesor/image_processor/bandscontainer.cpp
+    src/sceneprocesor/image_processor/bandscontainer.cpp \
+    src/sceneprocesor/scene_cutter/cutter.cpp
 
 
 HEADERS  += src/ui/adminwindow.h \
@@ -52,7 +52,6 @@ HEADERS  += src/ui/adminwindow.h \
     src/calculator/transforms/basics_calculations.h \
     src/calculator/filters/ndvi_filter.h \
     src/calculator/filters/pm10filter.h \
-    src/ui/statusbar.h \
     src/services/copy_service/copy_service.h \
     src/sceneprocesor/image_processor/sceneprocessor.h \
     src/sceneprocesor/processingthread.h \
@@ -68,12 +67,11 @@ HEADERS  += src/ui/adminwindow.h \
     src/postgis/geographic/BoundingBox.h \
     src/calculator/filters/filter.h \
     src/sceneprocesor/scene_cutter/infoobjetivo.h \
-    src/sceneprocesor/scene_cutter/cutter.h \
     src/relations/scenedatarelations.h \
     src/sceneprocesor/image_processor/areaprocesor.h \
-    src/sceneprocesor/image_processor/bandscontainer.h
+    src/sceneprocesor/image_processor/bandscontainer.h \
+    src/sceneprocesor/scene_cutter/cutter.h
 
-FORMS    += adminwindow.ui \
-    statusbar.ui
+FORMS    += adminwindow.ui
 
 CONFIG += c++11

@@ -123,6 +123,10 @@ vector<Coords> MTL_Data_Collector::GetCoors(){
     return this->coors_table.ArrayToVector();
 }
 
+bool MTL_Data_Collector::IsL8(){
+    return matches(this->DATA_TYPE, IS_L8_REGEX);
+}
+
 /*-----------------------------Miscelaneas-------------------------------------*/
 
 double MTL_Data_Collector::LineValue_double(string input){

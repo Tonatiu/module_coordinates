@@ -8,7 +8,7 @@ using namespace std;
 class PM10Filter : public Filter
 {
 public:
-    PM10Filter(MTL_Data_Collector* collector);
+    PM10Filter(MTL_Data_Collector *collector);
     //Añade los valores empíricos para calcular PM10
     void SetEmpiricalValues(float a0, float a1, float a2);
     //Calcula el PM10 para un pixel

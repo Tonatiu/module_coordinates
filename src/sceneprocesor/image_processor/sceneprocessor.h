@@ -3,6 +3,8 @@
 
 #include <QtCore>
 #include <opencv2/opencv.hpp>
+#include "areaprocesor.h"
+#include "bandscontainer.h"
 #include "../../relations/scenedatarelations.h"
 #include "../../calculator/filters/ndvi_filter.h"
 #include "../../calculator/filters/pm10filter.h"
@@ -16,19 +18,20 @@ class SceneProcessor: public QThread
 {
 public:
     //El constructor recive el path de origen de la escena así como el nombre de la misma
-    SceneProcessor(string origin_path, string scene_name, SceneDataRelations *relations);
+    SceneProcessor(string origin_path, string scene_name, vector<AreaObjetivo> targets, MTL_Data_Collector collector, bool isL8);
     //Devuelve el apuntador al colector con la información
 private:
     /*Métodos privados*/
     void run();
-    //Abre la banda de una escena
-    Mat OpenBand(int band);
-    //
-    void AplyEnviromentalFilters();
     /*Atributos privados*/
     string origin_path;
     string scene_name;
-    SceneDataRelations* relations;
+    vector<AreaProcesor*> target_miners;
+    vector<AreaObjetivo> targets;
+    BandsContainer *scene_bands;
+    MTL_Data_Collector collector;
+    PM10Filter* filter_pm10;
+    NDVI_Filter* filter_ndvi;
 };
 
 #endif // SCENEPROCESSOR_H

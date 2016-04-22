@@ -46,6 +46,8 @@ public:
     vector<Coords> GetCoors();
     //Regresa el string con los datos capturados
     string To_String();
+    //Regresa true si la escena es de landsat 8
+    bool IsL8();
 private:
     /*Métdodos privados*/
     //Obtienen el valor almacenado en una línea del MTL
