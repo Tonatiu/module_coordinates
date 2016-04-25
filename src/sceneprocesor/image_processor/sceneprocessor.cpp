@@ -7,27 +7,64 @@ SceneProcessor::SceneProcessor(string origin_path, string scene_name, vector<Are
     this->targets = targets;
     this->collector = collector;
     this->scene_bands = new BandsContainer(isL8);
-    this->filter_pm10 = new PM10Filter(&collector);
-    this->filter_ndvi = new NDVI_Filter(&collector);
+}
+
+void SceneProcessor::CreateTargetObject(AreaObjetivo *target){
+    //Inserción de los datos provenientes del MTL
+    target->setId(this->collector.GetSceneID());
+    target->setDateAcquired(this->collector.GetAquiredDate());
+    target->setSceneCenterTime(this->collector.GetFileDate());
+    target->setCalidad(this->collector.GetQuality());
+    target->setNubosidad(this->collector.GetCloudCover());
 }
 
 void SceneProcessor::run(){
-    int num_targets = this->targets.size();
     this->scene_bands->OpenBands(this->origin_path, this->scene_name);
     //Generación de coordenadas del contenedor
     BoundingBox container_bounds(this->collector.GetCoors());
-    for(int i = 0; i < num_targets; i++){
-        //Adquisición de un área objetivo
-        AreaObjetivo target = targets.back();
-        targets.pop_back();
-        //Inserción de los datos provenientes del MTL
-        target.setId(this->collector.GetSceneID());
-        target.setDateAcquired(collector.GetAquiredDate());
-        target.setSceneCenterTime(collector.GetFileDate());
-        target.setCalidad(collector.GetQuality());
-        target.setNubosidad(collector.GetCloudCover());
-        //Procesamiento de las bandas en búsqueda de pm10 y ndvi
-        AreaProcesor* area_miner = new AreaProcesor(this->scene_bands, target, container_bounds, filter_pm10, filter_ndvi);
-        area_miner->start();
-    }
+    TargetsMining(&this->targets, &container_bounds);
+    this->exit();
 }
+
+void SceneProcessor::TargetsMining(vector<AreaObjetivo> *Targets, BoundingBox *container_bounds){
+    AreaProcesor* area_miner;
+    AreaObjetivo target;
+    vector<AreaProcesor*> miners;
+
+    if(Targets->size() == 0)
+        return;
+
+    if(Targets->size() >= 3){
+        for(int i = 0; i < 3; i++){
+            target = Targets->back();
+            Targets->pop_back();
+            CreateTargetObject(&target);
+            area_miner = new AreaProcesor(this->scene_bands, target, *container_bounds, &collector);
+            miners.push_back(area_miner);
+            area_miner->start();
+        }
+        for(int i = 0; i < 3; i++){
+            area_miner = miners.back();
+            area_miner->wait();
+            miners.pop_back();
+        }
+    }else if(Targets->size() > 0 && Targets->size() < 3){
+        int count = Targets->size();
+        for(int i = 0; i < count; i++){
+            target = Targets->back();
+            Targets->pop_back();
+            CreateTargetObject(&target);
+            area_miner = new AreaProcesor(this->scene_bands, target, *container_bounds, &collector);
+            miners.push_back(area_miner);
+            area_miner->start();
+        }
+        for(int i = 0; i < count; i++){
+            area_miner = miners.back();
+            area_miner->wait();
+            miners.pop_back();
+        }
+    }
+    TargetsMining(Targets, container_bounds);
+}
+
+

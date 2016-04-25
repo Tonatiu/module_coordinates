@@ -23,6 +23,8 @@ public:
 private:
     /*Métodos privados*/
     void run();
+    void CreateTargetObject(AreaObjetivo* target);
+    void TargetsMining(vector<AreaObjetivo> *Targets, BoundingBox *container_bounds);
     /*Atributos privados*/
     string origin_path;
     string scene_name;
@@ -30,8 +32,6 @@ private:
     vector<AreaObjetivo> targets;
     BandsContainer *scene_bands;
     MTL_Data_Collector collector;
-    PM10Filter* filter_pm10;
-    NDVI_Filter* filter_ndvi;
 };
 
 #endif // SCENEPROCESSOR_H

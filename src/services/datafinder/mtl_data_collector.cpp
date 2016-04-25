@@ -52,12 +52,13 @@ void MTL_Data_Collector::ObtainData(){
             this->AQUISITION_DATE = this->LineValue_string(line);
         }
         //En caso de encontrar la inclinación solar
-        else if(matches(line, SUN_AZIMUTH_REGEX)){
-            this->AZIMUT = this->LineValue_double(line);
+        else if(matches(line, SUN_ELEVATION_REGEX)){
+            this->SUN_ELEVATION = this->LineValue_double(line);
         }
         //Se localiza el tipo de satélite que tomo la escena
         else if(matches(line, SPACECRAFT_TYPE_REGEX)){
             this->SPACE_CRAFT_ID = this->LineValue_string(line);
+            cout << this->SPACE_CRAFT_ID << "\n";
         }
         //En caso de localizar el nombre de la escena
         else if(matches(line, NAME_REGEX)){
@@ -99,8 +100,8 @@ string MTL_Data_Collector::GetFileDate(){
     return this->FILE_DATE;
 }
 
-double MTL_Data_Collector::GetAzimuth(){
-    return this->AZIMUT;
+double MTL_Data_Collector::GetSunElevation(){
+    return this->SUN_ELEVATION;
 }
 
 double MTL_Data_Collector::GetQuality(){
@@ -124,7 +125,7 @@ vector<Coords> MTL_Data_Collector::GetCoors(){
 }
 
 bool MTL_Data_Collector::IsL8(){
-    return matches(this->DATA_TYPE, IS_L8_REGEX);
+    return matches(this->SPACE_CRAFT_ID, IS_L8_REGEX);
 }
 
 /*-----------------------------Miscelaneas-------------------------------------*/
@@ -179,7 +180,7 @@ string MTL_Data_Collector::To_String(){
            this->SPACE_CRAFT_ID + "\n" +
            this->AQUISITION_DATE + "\n" +
            this->FILE_DATE + "\n" +
-           to_string(this->AZIMUT) + "\n" +
+           to_string(this->SUN_ELEVATION) + "\n" +
            to_string(this->IMG_QUALITY) + "\n" +
            to_string(this->CLOUD_COVER) + "\n" +
            this->DATA_TYPE + "\n";

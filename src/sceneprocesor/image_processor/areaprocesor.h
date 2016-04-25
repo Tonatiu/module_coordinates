@@ -18,14 +18,13 @@ using namespace cv;
 class AreaProcesor: public QThread
 {
 public:
-    AreaProcesor(BandsContainer* Bands, AreaObjetivo target, BoundingBox containerbounds, PM10Filter* filter_pm10, NDVI_Filter* filter_ndvi);
+    AreaProcesor(BandsContainer* Bands, AreaObjetivo target, BoundingBox containerbounds, MTL_Data_Collector* collector);
 private:
     void run();
     void AplyFilters();
     BandsContainer* Bands;
     AreaObjetivo target;
     BoundingBox countainer_bounds;
-    QMutex mutex;
     PostgisFunctions functions_to_postgis;
     PM10Filter* filter_pm10;
     NDVI_Filter* filter_ndvi;

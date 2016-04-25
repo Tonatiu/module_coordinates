@@ -15,7 +15,7 @@ public:
     //Devuelve el colector del procesador de escenas indicado por pos
 private:
     void run();
-    void CreateProcess();
+    void CreateProcess(vector<SceneProcessor *> *procesors);
     SceneDataRelations *relations;
     string origin_path;
 };

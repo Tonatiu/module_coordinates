@@ -27,7 +27,14 @@ InfoObjetivo *CoorsToPixel(BoundingBox target, int img_high, int img_width, Boun
 
 
 
-   InfoObjetivo *pixel_pos_target = new InfoObjetivo(Up_x, Up_y, Down_x, Down_y, (Down_x - Up_y), (Down_y - Up_y));
+   InfoObjetivo *pixel_pos_target = new InfoObjetivo(
+               Up_x,
+               Up_y,
+               Down_x,
+               Down_y,
+               (Down_x - Up_x),
+               (Down_y - Up_y)
+               );
 
    return pixel_pos_target;
 }

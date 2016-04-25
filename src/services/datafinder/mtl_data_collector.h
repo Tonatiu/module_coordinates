@@ -35,7 +35,7 @@ public:
     //Obtiene la fecha de creación del archivo
     string GetFileDate();
     //Regresa el ángulo del sol con respecto a la tierra
-    double GetAzimuth();
+    double GetSunElevation();
     //Regresa la calidad de la escena
     double GetQuality();
     //Regresa la nubosidad de la escena
@@ -67,7 +67,7 @@ private:
     //Fecha de generacion de la escena
     string FILE_DATE;
     //Ángulo del sol con respecto a la tierra
-    double AZIMUT;
+    double SUN_ELEVATION;
     //Calidad de la escena satelital
     double IMG_QUALITY;
     //Nubosidad
