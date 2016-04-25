@@ -44,7 +44,7 @@ void AreaProcesor::AplyFilters(){
 void AreaProcesor::run(){
     AplyFilters();
     if(this->functions_to_postgis.insertAreaObjetivo(this->target)){
-        cout << "Insert OK";
+        cout << "Insert OK\n";
     }
     return;
 }

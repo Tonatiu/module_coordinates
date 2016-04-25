@@ -67,24 +67,46 @@ void AdminWindow::on_addButton_clicked(){
             std::string user_name( pw->pw_name);
             //Creación de la ruta donde se copiarán las escenas
             std::string scenes_destiny = "/home/" + user_name + "/LandsatScenes";
+            this->scenes_destiny_path = scenes_destiny;
             std::string makeScenesDir = "mkdir " + scenes_destiny;
             system(makeScenesDir.c_str());
             //Filtro de escenas para copiar
             DataFilter filter;
             filter.AplyFilter(&this->scene_data_relations, this->service.GetOriginPath());
             //Copiado de escenas al destino predefinido
-            Copy_Service* copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), scenes_destiny, this->service.GetOriginPath());
+            copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), scenes_destiny, this->service.GetOriginPath());
+            connect(copy_service, SIGNAL(started()), this, SLOT(start_copy_service()));
             copy_service->start();
-            copy_service->wait();
-            //El proceso se encarga de procesar las escenas y almacenar los datos en postgis
-            ProcessingThread* scene_process_thread = new ProcessingThread(&this->scene_data_relations, scenes_destiny);
-            scene_process_thread->start();
-            /*if(copy_service->GetStatus()){
-                QMessageBox::information(this, "Copiado exitoso", "Las escenas se han añadido correctamente");
-            }
-            else{
-                QMessageBox::warning(this, "Error al copiar", "Algunas escenas no pudieron copiarse a la carpeta de destino");
-            }*/
+            connect(copy_service, SIGNAL(finished()), this, SLOT(start_process_service()));
         }
     }
+}
+
+void AdminWindow::set_end_process_message(){
+    this->statusBar()->showMessage(this->end_process_message.c_str());
+}
+
+void AdminWindow::set_start_process_message(){
+    this->statusBar()->showMessage(this->start_process_message.c_str());
+}
+
+void AdminWindow::start_copy_service(){
+    CopyBar *newCopyBar = new CopyBar();
+    connect(copy_service, SIGNAL(finished()), newCopyBar, SLOT(close()));
+    connect(newCopyBar->GetUi()->CancelButton, SIGNAL(clicked(bool)), copy_service, SLOT(terminate()));
+    newCopyBar->show();
+}
+
+void AdminWindow::start_process_service(){
+    //El proceso se encarga de procesar las escenas y almacenar los datos en postgis
+    this->scene_process_thread = new ProcessingThread(&this->scene_data_relations, scenes_destiny_path);
+    connect(scene_process_thread, SIGNAL(started()), this, SLOT(set_start_process_message()));
+    connect(scene_process_thread, SIGNAL(finished()), this, SLOT(set_end_process_message()));
+    connect(scene_process_thread, SIGNAL(finished()), this, SLOT(start_node_call_service()));
+    scene_process_thread->start();
+}
+
+void AdminWindow::start_node_call_service(){
+    system(this->node_path.c_str());
+    cout<<"Script node activado}n";
 }

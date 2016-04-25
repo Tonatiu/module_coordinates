@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     src/relations/scenedatarelations.cpp \
     src/sceneprocesor/image_processor/areaprocesor.cpp \
     src/sceneprocesor/image_processor/bandscontainer.cpp \
-    src/sceneprocesor/scene_cutter/cutter.cpp
+    src/sceneprocesor/scene_cutter/cutter.cpp \
+    src/ui/copybar.cpp
 
 
 HEADERS  += src/ui/adminwindow.h \
@@ -70,8 +71,10 @@ HEADERS  += src/ui/adminwindow.h \
     src/relations/scenedatarelations.h \
     src/sceneprocesor/image_processor/areaprocesor.h \
     src/sceneprocesor/image_processor/bandscontainer.h \
-    src/sceneprocesor/scene_cutter/cutter.h
+    src/sceneprocesor/scene_cutter/cutter.h \
+    src/ui/copybar.h
 
-FORMS    += adminwindow.ui
+FORMS    += adminwindow.ui \
+    src/ui/copybar.ui
 
 CONFIG += c++11

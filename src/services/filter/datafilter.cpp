@@ -28,6 +28,8 @@ void DataFilter::AplyFilter(SceneDataRelations *relations, string origin_path){
                 cout << scene_name << " rejected\n";
                 relations->EraseFileByID(i);
                 collector = NULL;
+                num_scenes--;
+                i--;
             }else{
                 cout<<"Accepted " << results.size() <<"\n";
                 relations->PushCollector(*collector);
