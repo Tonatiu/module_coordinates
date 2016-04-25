@@ -22,6 +22,8 @@ void SceneProcessor::run(){
     this->scene_bands->OpenBands(this->origin_path, this->scene_name);
     //Generación de coordenadas del contenedor
     BoundingBox container_bounds(this->collector.GetCoors());
+    AreaProcesor* area_miner;
+    AreaObjetivo target;
     TargetsMining(&this->targets, &container_bounds);
     this->exit();
 }

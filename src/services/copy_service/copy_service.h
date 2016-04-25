@@ -9,6 +9,7 @@ using namespace std;
 
 class Copy_Service: public QThread
 {
+    Q_OBJECT
 public:
     Copy_Service(vector<string> *queue, string destiny_path, string origin_path);
     bool GetStatus();
@@ -20,6 +21,7 @@ private:
     bool copy_status = true;
     bool running = true;
     void run();
+private slots:
 };
 
 #endif // COPY_SERVICE_H

@@ -19,9 +19,10 @@ class AreaProcesor: public QThread
 {
 public:
     AreaProcesor(BandsContainer* Bands, AreaObjetivo target, BoundingBox containerbounds, MTL_Data_Collector* collector);
+    void AplyFilters();
 private:
     void run();
-    void AplyFilters();
+    //void AplyFilters();
     BandsContainer* Bands;
     AreaObjetivo target;
     BoundingBox countainer_bounds;
