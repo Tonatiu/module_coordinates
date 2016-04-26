@@ -17,10 +17,10 @@ void ProcessingThread::CreateProcess(vector<SceneProcessor*> *procesors){
 
 void ProcessingThread::run(){
     int num_scenes;
-    num_scenes = relations->GetFilesCount();
     vector<SceneProcessor*> procesors;
     //Mientras la lista de escenas no esté vacía
     while(!relations->FileNamesEmpty()){
+        num_scenes = relations->GetFilesCount();
         //Se generan lotes de 3 hilos para evitar que se devore toda la memoria abriendo las imágenes .TIF
         if(num_scenes >= 3){
             for(int i = 0; i < 3; i++){
