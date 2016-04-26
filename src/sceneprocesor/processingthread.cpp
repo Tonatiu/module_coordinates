@@ -27,7 +27,9 @@ void ProcessingThread::run(){
                 this->CreateProcess(&procesors);
             }
             for(int i = 0; i < 3; i++){
-                procesors.back()->wait();
+                SceneProcessor *process = procesors.back();
+                if(process->isRunning())
+                    process->wait();
                 procesors.pop_back();
             }
         }
@@ -36,7 +38,9 @@ void ProcessingThread::run(){
                 this->CreateProcess(&procesors);
             }
             for(int i = 0; i < num_scenes; i++){
-                procesors.back()->wait();
+                SceneProcessor *process = procesors.back();
+                if(process->isRunning())
+                    process->wait();
                 procesors.pop_back();
             }
         }
