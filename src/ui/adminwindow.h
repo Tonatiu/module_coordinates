@@ -48,7 +48,6 @@ private:
     string status = "Status: ";
     string queueLength;
     SceneDataRelations scene_data_relations;
-    string node_path = "../postgis/scripts/mongoTransition.js";
     string end_process_message = "Status: Se han terminado de procesar las escenas";
     string start_process_message = "Status: En este momento se están procesando escenas";
     Copy_Service* copy_service;

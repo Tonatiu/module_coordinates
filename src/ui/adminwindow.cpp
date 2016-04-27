@@ -107,6 +107,10 @@ void AdminWindow::start_process_service(){
 }
 
 void AdminWindow::start_node_call_service(){
-    system(this->node_path.c_str());
-    cout<<"Script node activado}n";
+    string command = "node ../postgis/scripts/mongoTransition.js";
+    int script_status = system(command.c_str());
+    if(script_status != 0)
+        cout<<"Script node activado\n";
+    else
+        cout<<"Script node no activado\n";
 }
