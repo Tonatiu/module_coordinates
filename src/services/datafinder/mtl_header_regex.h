@@ -15,5 +15,6 @@
 #define QUOT_VALUE_REGEX "\".*\""
 #define IS_L8_REGEX "LANDSAT_8"
 #define SCENE_NAME "\"[A-Z]{2}[0-9]{14}[A-Z]{3}[0-9]{2}\""
+#define PATH_REGEX "(\/[a-zA-Z0-9_]*)+"
 
 #endif // MTL_HEADER_REGEX_H

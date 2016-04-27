@@ -21,7 +21,7 @@ void AdminWindow::on_searchButtonn_clicked()
     ui->statusBar->showMessage(this->status.c_str());
     QString path = ui->PathEddit->text();
     //Comprueba que el texto de PathEddit sea una ruta válida
-    if(!matches(path.toStdString(), "(\/[a-zA-Z0-9_]*)+"))
+    if(!matches(path.toStdString(), PATH_REGEX))
         QMessageBox::warning(this, "Ruta no válida", "Ingrese una ruta válida");
     else{
         //Llama al servicio de búsqueda e informa del éxito o fracaso de la búsqueda
