@@ -3,6 +3,7 @@
 
 #include "./src/services/datafinder/mtl_data_collector.h"
 #include "../relations/scenedatarelations.h"
+#include "./src/services/datafinder/mtl_header_regex.h"
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/types.h>

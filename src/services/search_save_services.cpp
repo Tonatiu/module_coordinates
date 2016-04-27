@@ -11,7 +11,7 @@ bool Search_Save_Services::SearchScenesService(string path, SceneDataRelations *
     char buffer[512];
     this->Origin_Path = path + "/";
     //Obtención de los resultados arrojados por ls
-    stream = this->SearchService(path, "\"[A-Z]{2}[0-9]{14}[A-Z]{3}[0-9]{2}\"");
+    stream = this->SearchService(path, SCENE_NAME);
     //verifica que stream no regrese vacío
     if(stream == NULL)
         return false;
