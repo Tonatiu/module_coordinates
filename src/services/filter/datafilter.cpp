@@ -36,6 +36,13 @@ void DataFilter::AplyFilter(SceneDataRelations *relations, string origin_path){
                 relations->PushSceneTargets(results);
             }
         }
+        else{
+            cout << scene_name << " rejected\n";
+            relations->EraseFileByID(i);
+            collector = NULL;
+            num_scenes--;
+            i--;
+        }
     }
     collector = NULL;
 }
