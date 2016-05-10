@@ -22,3 +22,4 @@ sudo apt-get install libqt5sql5-psql
 tambien la siguiente librería:
 http://installion.co.uk/ubuntu/trusty/universe/l/libpqxx-dev/install/index.html
 
+- se tiene tambien que agregar a la base de datos de PostgreSQL la tabla transitions

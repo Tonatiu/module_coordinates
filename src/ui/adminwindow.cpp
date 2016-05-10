@@ -66,7 +66,7 @@ void AdminWindow::on_addButton_clicked(){
             struct passwd* pw = getpwuid(getuid());
             std::string user_name( pw->pw_name);
             //Creación de la ruta donde se copiarán las escenas
-            std::string scenes_destiny = "/home/" + user_name + "/LandsatScenes";
+            std::string scenes_destiny = "/home/" + user_name + "/susi/landsatScenes";
             this->scenes_destiny_path = scenes_destiny;
             std::string makeScenesDir = "mkdir " + scenes_destiny;
             system(makeScenesDir.c_str());
