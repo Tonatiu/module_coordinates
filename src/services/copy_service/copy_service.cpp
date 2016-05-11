@@ -1,11 +1,12 @@
 #include "copy_service.h"
 #include <opencv2/opencv.hpp>
 
-Copy_Service::Copy_Service(vector<string> *queue, string destiny_path, string origin_path)
+Copy_Service::Copy_Service(vector<string> *queue, string destiny_path, string origin_path, string thumbnails_path)
 {
     this->scene_path_queue = queue;
     this->Destiny_Path = destiny_path;
     this->Origin_Path = origin_path;
+    this->Thumbnails_Path = thumbnails_path;
 }
 
 void Copy_Service::run(){
@@ -39,7 +40,7 @@ void Copy_Service::run(){
         cv::resize(final_color, chiquita, cv::Size(350,350), 0, 0, 1);
         vector<int> compression_params;
         compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-        string ruta_NombreThumbNail = "/home/luis/susi/thumbnails/" +filename+".png";
+        string ruta_NombreThumbNail = this->Thumbnails_Path + "/" +filename+".png";
         cv::imwrite(ruta_NombreThumbNail, chiquita, compression_params);
         cout<< ruta_NombreThumbNail + " guardada!! :D \n";
     }

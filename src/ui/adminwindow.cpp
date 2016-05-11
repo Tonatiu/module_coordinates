@@ -67,6 +67,8 @@ void AdminWindow::on_addButton_clicked(){
             std::string user_name( pw->pw_name);
             //Creación de la ruta donde se copiarán las escenas
             std::string scenes_destiny = "/home/" + user_name + "/susi/landsatScenes";
+            //Creación de la ruta donde se copiarán los thumbnails (imagenes miniatura)
+            std::string thumbnails_destiny = "/home/" + user_name + "/susi/thumbnails";
             this->scenes_destiny_path = scenes_destiny;
             std::string makeScenesDir = "mkdir " + scenes_destiny;
             system(makeScenesDir.c_str());
@@ -74,7 +76,7 @@ void AdminWindow::on_addButton_clicked(){
             DataFilter filter;
             filter.AplyFilter(&this->scene_data_relations, this->service.GetOriginPath());
             //Copiado de escenas al destino predefinido
-            copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), scenes_destiny, this->service.GetOriginPath());
+            copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), scenes_destiny, this->service.GetOriginPath(), thumbnails_destiny);
             connect(copy_service, SIGNAL(started()), this, SLOT(start_copy_service()));
             copy_service->start();
             connect(copy_service, SIGNAL(finished()), this, SLOT(start_process_service()));
