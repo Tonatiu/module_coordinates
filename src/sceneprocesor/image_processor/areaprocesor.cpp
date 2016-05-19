@@ -27,12 +27,10 @@ void AreaProcesor::AplyFilters(){
     int num_elements = info->GetAlto() * info->GetAncho();
     for(int row = 0; row < info->GetAlto(); row++){
         for(int col = 0; col < info->GetAncho(); col++){
-            pos_x + row;
-            pos_y + col;
-            blue = Bands->GentBandById(0).at<uchar>(pos_y, pos_x);
-            green = Bands->GentBandById(1).at<uchar>(pos_y, pos_x);
-            red = Bands->GentBandById(2).at<uchar>(pos_y, pos_x);
-            nir = Bands->GentBandById(3).at<uchar>(pos_y, pos_x);
+            blue = Bands->GentBandById(0).at<uchar>((pos_y + col), (pos_x + row));
+            green = Bands->GentBandById(1).at<uchar>((pos_y + col), (pos_x + row));
+            red = Bands->GentBandById(2).at<uchar>((pos_y + col), (pos_x + row));
+            nir = Bands->GentBandById(3).at<uchar>((pos_y + col), (pos_x + row));
             ndvi_prom += filter_ndvi->NDVI_Calc(red, nir) ;
             pm10_prom += filter_pm10->PM10Calc(red, green, blue);
         }

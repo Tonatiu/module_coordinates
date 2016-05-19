@@ -11,6 +11,7 @@
 #include "../services/copy_service/copy_service.h"
 #include "../services/filter/datafilter.h"
 #include "../sceneprocesor/processingthread.h"
+#include "../services/dir_maker/dirmakerservice.h"
 #include "copybar.h"
 
 namespace Ui {
@@ -45,6 +46,7 @@ private slots:
 private:
     Ui::AdminWindow *ui;
     Search_Save_Services service;
+    DirMakerService makerService;
     string status = "Status: ";
     string queueLength;
     SceneDataRelations scene_data_relations;

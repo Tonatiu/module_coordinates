@@ -1,11 +1,12 @@
 #include "adminwindow.h"
 
-
 AdminWindow::AdminWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AdminWindow)
 {
     this->service = Search_Save_Services();
+    this->makerService = DirMakerService();
+    this->scenes_destiny_path = this->makerService.scenes_path;
     ui->setupUi(this);
     ui->statusBar->showMessage(this->status.c_str());
 }
@@ -62,21 +63,11 @@ void AdminWindow::on_addButton_clicked(){
                                  QMessageBox::Ok, QMessageBox::Cancel);
 
         if(reply == QMessageBox::Ok){
-            //obtención del usuario actualmente activo en el SO
-            struct passwd* pw = getpwuid(getuid());
-            std::string user_name( pw->pw_name);
-            //Creación de la ruta donde se copiarán las escenas
-            std::string scenes_destiny = "/home/" + user_name + "/susi/landsatScenes";
-            //Creación de la ruta donde se copiarán los thumbnails (imagenes miniatura)
-            std::string thumbnails_destiny = "/home/" + user_name + "/susi/thumbnails";
-            this->scenes_destiny_path = scenes_destiny;
-            std::string makeScenesDir = "mkdir " + scenes_destiny;
-            system(makeScenesDir.c_str());
             //Filtro de escenas para copiar
             DataFilter filter;
             filter.AplyFilter(&this->scene_data_relations, this->service.GetOriginPath());
             //Copiado de escenas al destino predefinido
-            copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), scenes_destiny, this->service.GetOriginPath(), thumbnails_destiny);
+            copy_service = new Copy_Service(this->scene_data_relations.GetFileNames(), this->makerService.scenes_path, this->service.GetOriginPath(), this->makerService.minis_path);
             connect(copy_service, SIGNAL(started()), this, SLOT(start_copy_service()));
             copy_service->start();
             connect(copy_service, SIGNAL(finished()), this, SLOT(start_process_service()));

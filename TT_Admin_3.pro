@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     src/sceneprocesor/image_processor/areaprocesor.cpp \
     src/sceneprocesor/image_processor/bandscontainer.cpp \
     src/sceneprocesor/scene_cutter/cutter.cpp \
-    src/ui/copybar.cpp
+    src/ui/copybar.cpp \
+    src/services/dir_maker/dirmakerservice.cpp
 
 
 HEADERS  += src/ui/adminwindow.h \
@@ -72,7 +73,8 @@ HEADERS  += src/ui/adminwindow.h \
     src/sceneprocesor/image_processor/areaprocesor.h \
     src/sceneprocesor/image_processor/bandscontainer.h \
     src/sceneprocesor/scene_cutter/cutter.h \
-    src/ui/copybar.h
+    src/ui/copybar.h \
+    src/services/dir_maker/dirmakerservice.h
 
 FORMS    += adminwindow.ui \
     src/ui/copybar.ui

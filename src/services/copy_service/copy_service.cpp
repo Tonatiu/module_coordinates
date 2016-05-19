@@ -12,14 +12,14 @@ Copy_Service::Copy_Service(vector<string> *queue, string destiny_path, string or
 void Copy_Service::run(){
     if(scene_path_queue->empty())
         return;
-    for(int i = 0; (i < scene_path_queue->size()) && this->running; i++){
+    for(int i = 0; (i < (int)scene_path_queue->size()) && this->running; i++){
         string filename = (*this->scene_path_queue)[i];
         CopyThread *copy_thread = new CopyThread(this->Origin_Path, this->Destiny_Path, filename);
         copy_thread->start();
         copy_thread->wait();
 
         string rutaNombreGen = this->Destiny_Path +"/"+ filename + "/"+filename;
-        cout<<"\n"+ rutaNombreGen + "\n";
+        cout<<"Ruta \n"+ rutaNombreGen + "\n";
         string rutaTIFF_B = rutaNombreGen + "_B1.TIF";
         string rutaTIFF_G = rutaNombreGen + "_B2.TIF";
         string rutaTIFF_R = rutaNombreGen + "_B3.TIF";
@@ -39,7 +39,7 @@ void Copy_Service::run(){
 
         cv::resize(final_color, chiquita, cv::Size(350,350), 0, 0, 1);
         vector<int> compression_params;
-        compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+        compression_params.push_back(3);
         string ruta_NombreThumbNail = this->Thumbnails_Path + "/" +filename+".png";
         cv::imwrite(ruta_NombreThumbNail, chiquita, compression_params);
         cout<< ruta_NombreThumbNail + " guardada!! :D \n";
