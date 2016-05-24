@@ -23,3 +23,6 @@ tambien la siguiente librería:
 http://installion.co.uk/ubuntu/trusty/universe/l/libpqxx-dev/install/index.html
 
 - se tiene tambien que agregar a la base de datos de PostgreSQL la tabla transitions
+
+- para correrlo con el cliente en el mismo servidor se necesita establecer la ruta en la variable:
+this->minis_path; donde se guardarán las imagenes miniatura, esta variable esta en src/services/dir_maker/dirmakerservice.cpp

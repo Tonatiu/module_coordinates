@@ -7,7 +7,7 @@ DirMakerService::DirMakerService()
     string user_name( pw->pw_name);
     string susi_path = "/home/" + user_name + "/SusiCST";
     this->scenes_path = susi_path + "/" + "landsatScenes";
-    this->minis_path = susi_path + "/" + "thumbnails";
+    this->minis_path = "/home/" + user_name + "/Escritorio/TT/workspace_susi/public/susi" + "/" + "thumbnails";
 
     string create_susi = "mkdir " + susi_path;
     string create_scenes_dir = "mkdir " + this->scenes_path;
