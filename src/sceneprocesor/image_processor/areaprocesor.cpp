@@ -35,8 +35,14 @@ void AreaProcesor::AplyFilters(){
             pm10_prom += filter_pm10->PM10Calc(red, green, blue);
         }
     }
-    ndvi_prom = ndvi_prom / num_elements;
-    pm10_prom = pm10_prom / num_elements;
+    if(num_elements != 0){
+        ndvi_prom = ndvi_prom / num_elements;
+        pm10_prom = pm10_prom / num_elements;
+    }
+    else{
+        ndvi_prom = 0;
+        pm10_prom = 0;
+    }
     target.setPorcentajeContaminacion(pm10_prom);
     target.setporcentajeVegetacion(ndvi_prom);
 }

@@ -7,11 +7,16 @@ SceneProcessor::SceneProcessor(string origin_path, string scene_name, vector<Are
     this->targets = targets;
     this->collector = collector;
     this->scene_bands = new BandsContainer(isL8);
+    this->contadorAuxiliar = 0;
 }
 
 void SceneProcessor::CreateTargetObject(AreaObjetivo *target){
     //Inserción de los datos provenientes del MTL
     target->setId(this->collector.GetSceneID());
+
+    cout << "adquired date: " << this->collector.GetAquiredDate() << endl;
+    cout << this->collector.GetFileDate() << endl;
+
     target->setDateAcquired(this->collector.GetAquiredDate());
     target->setSceneCenterTime(this->collector.GetFileDate());
     target->setCalidad(this->collector.GetQuality());
@@ -32,6 +37,8 @@ void SceneProcessor::TargetsMining(vector<AreaObjetivo> *Targets, BoundingBox *c
     AreaObjetivo target;
     vector<AreaProcesor*> miners;
 
+    this->contadorAuxiliar++;
+    cout << contadorAuxiliar << endl;
     if(Targets->size() == 0)
         return;
 

@@ -19,6 +19,7 @@ class SceneProcessor: public QThread
 public:
     //El constructor recive el path de origen de la escena así como el nombre de la misma
     SceneProcessor(string origin_path, string scene_name, vector<AreaObjetivo> targets, MTL_Data_Collector collector, bool isL8);
+    int contadorAuxiliar;
     //Devuelve el apuntador al colector con la información
 private:
     /*Métodos privados*/
