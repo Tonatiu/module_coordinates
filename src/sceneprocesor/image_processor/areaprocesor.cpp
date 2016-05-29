@@ -5,7 +5,7 @@ AreaProcesor::AreaProcesor(BandsContainer* Bands, AreaObjetivo target, BoundingB
     this->Bands = Bands;
     this->target = target;
     this->countainer_bounds = containerbounds;
-    this->filter_ndvi = new NDVI_Filter(collector);
+    this->filter_evi = new EVI_Filter(collector);
     this->filter_pm10 = new PM10Filter(collector);
     this->filter_pm10->SetEmpiricalValues(410,253,-205);
 }
@@ -13,7 +13,7 @@ AreaProcesor::AreaProcesor(BandsContainer* Bands, AreaObjetivo target, BoundingB
 void AreaProcesor::AplyFilters(){
     uchar red, green, blue, nir;
 
-    float ndvi_prom = 0.0;
+    float evi_prom = 0.0;
     float pm10_prom = 0.0;
 
     int height, width;
@@ -31,14 +31,14 @@ void AreaProcesor::AplyFilters(){
             green = Bands->GentBandById(1).at<uchar>((pos_y + col), (pos_x + row));
             red = Bands->GentBandById(2).at<uchar>((pos_y + col), (pos_x + row));
             nir = Bands->GentBandById(3).at<uchar>((pos_y + col), (pos_x + row));
-            ndvi_prom += filter_ndvi->NDVI_Calc(red, nir) ;
+            evi_prom += filter_evi->EVI_Calc(red, nir, blue) ;
             pm10_prom += filter_pm10->PM10Calc(red, green, blue);
         }
     }
-    ndvi_prom = ndvi_prom / num_elements;
+    evi_prom = evi_prom / num_elements;
     pm10_prom = pm10_prom / num_elements;
     target.setPorcentajeContaminacion(pm10_prom);
-    target.setporcentajeVegetacion(ndvi_prom);
+    target.setporcentajeVegetacion(evi_prom);
 }
 
 void AreaProcesor::run(){

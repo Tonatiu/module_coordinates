@@ -4,7 +4,7 @@
 #include <QtCore>
 #include <opencv2/opencv.hpp>
 #include <vector>
-#include "../../calculator/filters/ndvi_filter.h"
+#include "../../calculator/filters/evi_filter.h"
 #include "../../calculator/filters/pm10filter.h"
 #include "../../postgis/postgis/entity/AreaObjetivo.h"
 #include "../../postgis/geographic/BoundingBox.h"
@@ -28,7 +28,7 @@ private:
     BoundingBox countainer_bounds;
     PostgisFunctions functions_to_postgis;
     PM10Filter* filter_pm10;
-    NDVI_Filter* filter_ndvi;
+    EVI_Filter* filter_evi;
 };
 
 #endif // AREAPROCESOR_H
